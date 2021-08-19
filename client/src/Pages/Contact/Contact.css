@@ -1,0 +1,52 @@
+.Connectionpage {
+  display: flex;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.Contact {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #fff;
+}
+.card-container-contact {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  height: 100%;
+  background-color: #fff;
+}
+.form-info-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+/* .cover {
+  height: 350px;
+  width: 100%;
+  background-position: right 35% top 45%;
+  background-size: cover;
+} */
+.page-top {
+  background-color: #023047;
+  border-bottom: 5px solid #55aaf0;
+  border-top: 5px solid #55aaf0;
+  padding: 40px 0;
+  text-align: left;
+}
+.page-top h1 {
+  color: #fff;
+  display: inline-block;
+  font-weight: 200;
+  margin: 0 0 -25px;
+  margin-left: 100px;
+  min-height: 37px;
+  font-size: 2.6em;
+  line-height: 46px;
+  padding: 0 0 17px;
+  font-family: "Cabin", sans-serif;
+}

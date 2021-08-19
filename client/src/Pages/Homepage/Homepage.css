@@ -1,0 +1,284 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Work+Sans:ital,wght@1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,625;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Georama:wght@100&display=swap");
+
+.image-header {
+  width: 100%;
+  height: 500px;
+}
+.image-header {
+  height: 95vh;
+  /* clip: rect(100px, 200px, 300px, 400px); */
+  /* clip: rect(0, 1980px, 500px, 0); */
+}
+
+.image-mask {
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.image-mask h1 {
+  font-size: 150px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.background {
+  height: 100%;
+}
+.image-mask h1 {
+  background: radial-gradient(
+    circle,
+    #caf0f8 0%,
+    #70d6ff 20%,
+    #84d2f6 40%,
+    #59a5d8 60%,
+    #00b4d8 100%
+  );
+  font-size: 100px;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 400%;
+  animation: gradient 10s linear infinite alternate;
+  font-family: "Georama", sans-serif;
+  font-weight: 900;
+  font-size: 120px;
+  letter-spacing: 5px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+.card-container1 {
+  background-color: #fff; /* #90be6d;*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 5em;
+}
+.description-homepage {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.software-comp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.section-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+}
+.section-1 h2 {
+  margin: 45px 0;
+  width: 100%;
+  padding: 0 60px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 5em;
+  font-family: "Roboto", sans-serif;
+  font-family: "Playfair Display", serif;
+  font-family: "Ubuntu", sans-serif;
+  font-family: "Georama", sans-serif;
+  letter-spacing: 0;
+  background-color: #fff;
+  color: #000;
+}
+.nos-projets {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: white;
+}
+.nos-projets span {
+  color: grey;
+  padding: 100px 0 50px;
+  font-family: "Georama", sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+}
+.nos-projets h2 {
+  padding: 0 0 50px;
+  color: black;
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-family: "Georama", sans-serif;
+  font-family: "Georama", sans-serif;
+}
+
+.section-approche {
+  background: white;
+  margin: 0;
+  color: black;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section-approche h1 {
+  margin-bottom: 50px;
+  font-family: "Georama", sans-serif;
+  font-weight: bold;
+  color: black;
+}
+.section-approche p {
+  margin: 0;
+  text-align: left;
+  width: 80%;
+  font-size: 25px;
+  font-family: "Georama", sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+}
+.section-approche p ul li {
+  text-align: left;
+}
+.flex-card-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.section-2 {
+  width: 100%;
+  padding: 0px 80px 100px 80px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.section-2 h2 {
+  color: #000;
+  padding: 50px 0;
+}
+.card-element {
+  flex: 1;
+}
+.card-and-description {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 0.7em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.card-resp {
+  flex: 1;
+}
+.card-and-description .description {
+  height: 100%;
+  flex: 2;
+  font-size: 18px;
+  font-family: "Georama", sans-serif;
+  padding: 50px 20px;
+  text-align: justify;
+  font-size: 25px;
+  color: #000;
+  border-radius: 0.55em;
+}
+
+.card-and-description .description-left {
+  height: 100%;
+  flex: 2;
+  font-size: 18px;
+  font-family: "Georama", sans-serif;
+  padding: 50px 20px;
+  text-align: justify;
+  color: #000;
+  border-radius: 0.55em;
+  font-size: 25px;
+}
+.divider {
+  width: 50%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  margin: 0 90px 0 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.divider i {
+  font-size: 400px;
+  width: 50%;
+  color: #00b4d8;
+}
+.area ol {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  text-align: start;
+  font-size: 25px;
+  color: #000;
+}
+.area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+@media (max-width: 730px) {
+  .flex-end-responsive {
+    flex-direction: column-reverse;
+  }
+  .divider {
+    background-color: transparent;
+    width: 0;
+    height: 0;
+  }
+  .area ol {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin: 20px 0;
+  }
+
+  .image-mask h1 {
+    background-size: 100%;
+    font-size: 80px;
+  }
+  .section-2 {
+    padding: 20px;
+  }
+}
+@media (max-width: 930) {
+}
+@media (min-width: 1275px) {
+}

@@ -1,0 +1,43 @@
+.Logiciel{
+  background-color: white;
+}
+.page-top {
+    background-color: #023047;
+    border-bottom: 5px solid #55aaf0;
+    border-top: 5px solid #c0c8cf;
+    padding: 40px 0;
+    text-align: left;
+  }
+  .page-top h1 {
+    color: #fff;
+    display: inline-block;
+    font-weight: 200;
+    margin: 0 0 -25px;
+    margin-left: 100px;
+    min-height: 37px;
+    font-size: 2.6em;
+    line-height: 46px;
+    padding: 0 0 17px;
+    font-family: "Cabin", sans-serif;
+  }
+  .logiciel-container {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  .h2, h2{
+    font-size: 20px;
+    
+  }
+  .logiciel-card-container{
+margin:20px;
+  } 
+  .fonctionalite{
+    font-weight: 900;
+    display:flex;
+    color: #023047;
+  }
+  

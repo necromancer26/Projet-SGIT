@@ -1,0 +1,88 @@
+.Carousel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* border: 5px solid magenta; */
+}
+.opinion-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  width: 100%;
+  color: black;
+  background-color: transparent;
+}
+.opinion-container p {
+  /* margin: 50px 30px; */
+  font-size: 20px;
+}
+button .control-arrow .control-next {
+  background-color: white;
+}
+.Carousel i {
+  font-size: 100px;
+  color: #8ecae6;
+}
+.quote1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #8ecae6;
+}
+.quote2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #8ecae6;
+}
+
+/* responsiveness */
+@media (max-width: 730px) {
+  .Carousel i {
+    font-size: 50px;
+  }
+  .Carousel {
+    justify-content: center;
+    align-items: center;
+  }
+  .quote1 {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: flex-start; */
+    width: 80%;
+  }
+  .quote2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 80%;
+    color: #8ecae6;
+  }
+}
+@media (max-width: 930px) {
+  .Carousel i {
+    font-size: 50px;
+  }
+  .Carousel {
+    justify-content: center;
+    align-items: center;
+  }
+  .quote1 {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: flex-start; */
+    width: 80%;
+  }
+  .quote2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 80%;
+    color: #8ecae6;
+  }
+}
+@media (min-width: 1275px) {
+}
