@@ -9,7 +9,7 @@ const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "admin",
-  database: "CRUDDataBase",
+  database: "sgit",
 });
 app.use(express.json());
 db.connect(function (error) {
@@ -36,7 +36,7 @@ app.post("/api/insert", (req, res) => {
   const movieReview = req.body.movieReview;
   const sqlInsert =
     "INSERT INTO movie_reviews (movieName,movieReview) VALUES (?,?)";
-  db.query(sqlInsert, [movieName, movieReview], (err, result) => {});
+  db.query(sqlInsert, [movieName, movieReview], (err, result) => { });
 });
 app.delete("/api/delete", (req, res) => {
   console.log("all");
