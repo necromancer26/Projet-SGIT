@@ -38,3 +38,35 @@ app.post("/api/insert", (req, res) => {
     "INSERT INTO movie_reviews (movieName,movieReview) VALUES (?,?)";
   db.query(sqlInsert, [movieName, movieReview], (err, result) => {});
 });
+app.delete("/api/delete", (req, res) => {
+  console.log("all");
+  const sqlDelete = "DELETE FROM movie_reviews ";
+  db.query(sqlDelete, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+});
+app.delete("/api/delete/:movieName", (req, res) => {
+  const name = req.params.movieName;
+  console.log("hee");
+  const sqlDelete = "DELETE FROM movie_reviews  WHERE movieName = ?";
+  db.query(sqlDelete, name, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+});
+app.put("/api/update", (req, res) => {
+  console.log("updating");
+  const review = req.body.movieReview;
+  const name = req.body.movieName;
+
+  console.log(name);
+  console.log(review);
+  const sqlUpdate =
+    "UPDATE movie_reviews SET movieReview = ? WHERE movieName = ?";
+  db.query(sqlUpdate, [review, name], (err, result) => {
+    // if (err) console.log(err);
+  });
+});

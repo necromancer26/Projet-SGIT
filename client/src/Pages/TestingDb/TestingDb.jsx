@@ -6,13 +6,47 @@ export default function TestingDb() {
   const [nameMovie, setNameMovie] = useState("");
   const [reviewMovie, setReviewMovie] = useState("");
   const [movieReviewList, setMovieReviewList] = useState([]);
+  const [review, setReview] = useState("");
   useEffect(() => {
     axios.get("http://localhost:3001/api/get").then((response) => {
       setMovieReviewList(response.data);
     });
   }, []);
+  const deleteReview = (movieName) => {
+    axios
+      .delete(`http://localhost:3001/api/delete/${movieName}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+  const deleteAll = () => {
+    axios
+      .delete(`http://localhost:3001/api/delete`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+  const updateReview = (name) => {
+    console.log(review);
+    axios
+      .put("http://localhost:3001/api/update", {
+        movieName: name,
+        movieReview: review,
+      })
+      .then((res) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleSubmit = (evt) => {
+    evt.preventDefault();
     axios
       .post("http://localhost:3001/api/insert", {
         movieName: nameMovie,
@@ -43,11 +77,34 @@ export default function TestingDb() {
           value={reviewMovie}
         />
         <button>Submit</button>
+        <button onClick={deleteAll}>DELETE ALL</button>
       </form>
       <ul>
         {movieReviewList.map((movie) => (
           <li>
             {movie.movieName} {movie.movieReview}
+            <button
+              onClick={() => {
+                deleteReview(movie.movieName);
+              }}
+            >
+              {" "}
+              Delete
+            </button>
+            <input
+              type="text"
+              // value={updatedReview}
+              onChange={(evt) => {
+                setReview(evt.target.value);
+              }}
+            />
+            <button
+              onClick={() => {
+                updateReview(movie.movieName);
+              }}
+            >
+              Update
+            </button>
           </li>
         ))}
       </ul>
