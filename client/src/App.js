@@ -12,6 +12,7 @@ import About from "./Pages/About/About";
 import Logiciel from "./Pages/Logiciels/logiciel";
 import EnCour from "./Pages/EnCour/EnCour";
 import TestingDb from "./Pages/TestingDb/TestingDb";
+import AddProduit from "./Pages/AddProduit/AddProduit";
 function App() {
   return (
     <div className="App">
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/logiciel" component={Logiciel} />
         <Route exact path="/EnCour" component={EnCour} />
         <Route exact path="/test" component={TestingDb} />
+        <Route exact path="/Produit" component={AddProduit} />
       </Switch>
       <Footer />
     </div>
