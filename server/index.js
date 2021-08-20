@@ -29,24 +29,25 @@ app.get("/api/produit/get", (req, res) => {
     res.send(result);
   });
 });
+app.post("/register", (req, res) => {
+  const { nomUtilisateur, pseudoUtilisateur, mdpUtilisateur, mdpConfirm } =
+    req.body;
+  // mdpUtilisateur === mdpConfirm ? console.log("true") : console.log("error");
+  const sqlInsert =
+    "INSERT INTO utilisateur (NomUtilisateur,PseudoUtilisateur,MotDePasse) VALUES (?,?,?)";
+  db.query(
+    sqlInsert,
+    [nomUtilisateur, pseudoUtilisateur, mdpUtilisateur],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+    }
+  );
+});
 app.post("/api/produit/insert", (req, res) => {
-  // const nomProduit = req.body.nomProduit;
-  // const codeProduit = req.body.codeProduit;
-  // const categorieProduit = req.body.categorieProduit;
-  // const detailProduit = req.body.detailProduit;
   const { nomProduit, codeProduit, categorieProduit, detailProduit } = req.body;
   const sqlInsert =
-<<<<<<< HEAD
-    "INSERT INTO movie_reviews (movieName,movieReview) VALUES (?,?)";
-  db.query(sqlInsert, [movieName, movieReview], (err, result) => { });
-});
-app.delete("/api/delete", (req, res) => {
-  console.log("all");
-  const sqlDelete = "DELETE FROM movie_reviews ";
-  db.query(sqlDelete, (err, result) => {
-    if (err) {
-      console.log(err);
-=======
     "INSERT INTO produit (CodeProduit,NomProduit,Categorie,Detail) VALUES (?,?,?,?)";
   db.query(
     sqlInsert,
@@ -55,10 +56,73 @@ app.delete("/api/delete", (req, res) => {
       if (err) {
         console.log(err);
       }
->>>>>>> 40371e08c946f633ff7c1a3dfd45b32138408983
     }
   );
 });
+app.get("/societe/get", (req, res) => {
+  const sqlSelect = "SELECT * FROM societe";
+  db.query(sqlSelect, (err, result) => {
+    res.send(result);
+  });
+});
+app.post("/societe/insert", (req, res) => {
+  console.log("in database");
+  const {
+    NomSociete,
+    Adresse,
+    CodeCNSS,
+    MatriculeFiscal,
+    CodeTVA,
+    CodeCategorie,
+    NombreEtsSecondaire,
+    Tel,
+    Fax,
+    Responsable,
+    Mail,
+    TauxCNSSPatronal,
+    TauxCNSSOuvriere,
+    TauxAccidentTravail,
+    TauxTFP,
+    TauxFOPROLOS,
+    AssuranceGroupe,
+    TauxAssGroupePatronal,
+    TauxAssGroupeOuvriere,
+    Banque,
+    RIB,
+  } = req.body;
+  const sqlInsert =
+    "INSERT INTO societe (NomSociete, Adresse, CodeCNSS, MatriculeFiscal, CodeTVA, CodeCategorie, NombreEtsSecondaire, Tel, Fax, Responsable, Mail, TauxCNSSPatronal, TauxCNSSOuvriere, TauxAccidentTravail, TauxTFP, TauxFOPROLOS, AssuranceGroupe, TauxAssGroupePatronal, TauxAssGroupeOuvriere, Banque, RIB) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+  db.query(
+    sqlInsert,
+    [
+      NomSociete,
+      Adresse,
+      CodeCNSS,
+      MatriculeFiscal,
+      CodeTVA,
+      CodeCategorie,
+      NombreEtsSecondaire,
+      Tel,
+      Fax,
+      Responsable,
+      Mail,
+      TauxCNSSPatronal,
+      TauxCNSSOuvriere,
+      TauxAccidentTravail,
+      TauxTFP,
+      TauxFOPROLOS,
+      AssuranceGroupe,
+      TauxAssGroupePatronal,
+      TauxAssGroupeOuvriere,
+      Banque,
+      RIB,
+    ],
+    (err, result) => {
+      if (err) console.log(err);
+    }
+  );
+});
+
 /*
 INSERT INTO produit (CodeProduit,NomProduit,Categorie,Detail) VALUES (?,?,?,?)
 */

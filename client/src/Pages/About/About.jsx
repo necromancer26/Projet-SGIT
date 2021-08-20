@@ -119,27 +119,40 @@ export default function About() {
           imageLink="https://www.tacresults.com/wp-content/uploads/2015/08/Aug2015.jpg"
           nom="BEDOUI Basma"
           profession="Expert Comptable"
-          description="- Mastère professionnel Sécurité des Systèmes Informatiques, Communicants et embarqués.
-          - Mastère spécialisé en System de communication et réseaux.
-          - Maîtrise Electronique-Informatique."
+          description={() => (
+            <p>
+              {" "}
+              - Mastère professionnel Sécurité des Systèmes Informatiques,
+              Communicants et embarqués. - Mastère spécialisé en System de
+              communication et réseaux. - Maîtrise Electronique-Informatique.
+            </p>
+          )}
         />
         <FoundersCard
           isFounder
           imageLink="http://landfoodpeople.ca/wp-content/uploads/2021/04/finance-coach-1.jpeg"
           nom="WAHADA Mourad"
           profession="Expert Comptable"
-          description="- Mastère professionnel Sécurité des Systèmes Informatiques, Communicants et embarqués.
-          - Mastère spécialisé en System de communication et réseaux.
-          - Maîtrise Electronique-Informatique."
+          description={() => (
+            <p>
+              - Mastère professionnel Sécurité des Systèmes Informatiques,
+              Communicants et embarqués. - Mastère spécialisé en System de
+              communication et réseaux. - Maîtrise Electronique-Informatique.
+            </p>
+          )}
         />
         <FoundersCard
           isFounder
           imageLink="https://ied.eu/wp-content/uploads/2018/04/entrepreneur-1.jpg"
           nom="BEDOUI Basma"
           profession="Expert Comptable"
-          description="- Mastère professionnel Sécurité des Systèmes Informatiques, Communicants et embarqués.
-          - Mastère spécialisé en System de communication et réseaux.
-          - Maîtrise Electronique-Informatique."
+          description={() => (
+            <p>
+              - Mastère professionnel Sécurité des Systèmes Informatiques,
+              Communicants et embarqués. - Mastère spécialisé en System de
+              communication et réseaux. - Maîtrise Electronique-Informatique.
+            </p>
+          )}
         />
       </div>
       <h2> Nos référence </h2>

@@ -11,13 +11,11 @@ import NeoNavbar from "./Components/NeoNavbar/NeoNavbar";
 import About from "./Pages/About/About";
 import Logiciel from "./Pages/Logiciels/logiciel";
 import EnCour from "./Pages/EnCour/EnCour";
-<<<<<<< HEAD
 //import TestingDb from "./Pages/societe/societe";
 import Societe from "./Pages/societe/societe";
-=======
 import TestingDb from "./Pages/TestingDb/TestingDb";
 import AddProduit from "./Pages/AddProduit/AddProduit";
->>>>>>> 40371e08c946f633ff7c1a3dfd45b32138408983
+import Register from "./Pages/Register/Register";
 function App() {
   return (
     <div className="App">
@@ -28,15 +26,13 @@ function App() {
         <Route exact path="/about" component={About} />
         <Route exact path="/logiciel" component={Logiciel} />
         <Route exact path="/EnCour" component={EnCour} />
-<<<<<<< HEAD
         <Route exact path="/societe" component={Societe} />
-=======
         <Route exact path="/test" component={TestingDb} />
-      <Route exact path="/Produit" component={AddProduit} />
->>>>>>> 40371e08c946f633ff7c1a3dfd45b32138408983
+        <Route exact path="/Produit" component={AddProduit} />
+        <Route exact path="/register" component={Register} />
       </Switch>
-    <Footer />
-    </div >
+      <Footer />
+    </div>
   );
 }
 
