@@ -25,9 +25,11 @@ export default function Societe() {
     const [TauxAssGroupeOuvriere, setTauxAssGroupeOuvriere] = useState("");
     const [Banque, setBanque] = useState("");
     const [RIB, setRIB] = useState("");
+    const [societe, setSociete] = useState([]);
+
     useEffect(() => {
-        axios.get("http://localhost:3001/api/get").then((response) => {
-            setSociete(response.data);
+        axios.get("http://localhost:3001/api/societe/get").then((res) => {
+            setSociete(res.data);
         });
     }, []);
     // const deleteReview = (IDSociete) => {
@@ -63,10 +65,9 @@ export default function Societe() {
     //         });
     // };
 
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
+    const handleSubmit = () => {
         axios
-            .post("http://localhost:3001/api/insert", {
+            .post("http://localhost:3001/api/societe/insert", {
                 NomSociete: NomSociete,
                 Adresse: Adresse,
                 CodeCNSS: CodeCNSS,
@@ -82,7 +83,7 @@ export default function Societe() {
                 TauxCNSSOuvriere: TauxCNSSOuvriere,
                 TauxAccidentTravail: TauxAccidentTravail,
                 TauxTFP: TauxTFP,
-                setTauxFOPROLOS: setTauxFOPROLOS,
+                TauxFOPROLOS: TauxFOPROLOS,
                 AssuranceGroupe: AssuranceGroupe,
                 TauxAssGroupePatronal: TauxAssGroupePatronal,
                 TauxAssGroupeOuvriere: TauxAssGroupeOuvriere,
