@@ -9,25 +9,25 @@ export default function Societe() {
     const [CodeCNSS, setCodeCNSS] = useState("");
     const [MatriculeFiscal, setMatriculeFiscal] = useState("");
     const [CodeTVA, setCodeTVA] = useState("");
-    const [CodeCategorie, setCategorie] = useState("");
-    const [NombreEtsSecondaire, setEtsSecondaire] = useState("");
+    const [CodeCategorie, setCodeCategorie] = useState("");
+    const [NombreEtsSecondaire, setNombreEtsSecondaire] = useState("");
     const [Tel, setTel] = useState("");
     const [Fax, setFax] = useState("");
     const [Responsable, setResponsable] = useState("");
     const [Mail, setMail] = useState("");
     const [TauxCNSSPatronal, setTauxCNSSPatronal] = useState("");
-    const [TauxCNSSOuvriere, setTauxCNSSOuvriere] = useState("");
+    const [TauxAccidentTravail, setTauxAccidentTravail] = useState("");
     const [TauxCNSSOuvriere, setTauxCNSSOuvriere] = useState("");
     const [TauxTFP, setTauxTFP] = useState("");
     const [TauxFOPROLOS, setTauxFOPROLOS] = useState("");
     const [AssuranceGroupe, setAssuranceGroupe] = useState("");
     const [TauxAssGroupePatronal, setTauxAssGroupePatronal] = useState("");
-    const [TauxAssGroupOuvriere, setTauxAssGroupOuvriere] = useState("");
+    const [TauxAssGroupeOuvriere, setTauxAssGroupeOuvriere] = useState("");
     const [Banque, setBanque] = useState("");
     const [RIB, setRIB] = useState("");
     useEffect(() => {
         axios.get("http://localhost:3001/api/get").then((response) => {
-            setIDSociete(response.data);
+            setSociete(response.data);
         });
     }, []);
     // const deleteReview = (IDSociete) => {
@@ -82,7 +82,7 @@ export default function Societe() {
                 TauxCNSSOuvriere: TauxCNSSOuvriere,
                 TauxAccidentTravail: TauxAccidentTravail,
                 TauxTFP: TauxTFP,
-                setTauxFORPROLOS: setTauxFORPROLOS,
+                setTauxFOPROLOS: setTauxFOPROLOS,
                 AssuranceGroupe: AssuranceGroupe,
                 TauxAssGroupePatronal: TauxAssGroupePatronal,
                 TauxAssGroupeOuvriere: TauxAssGroupeOuvriere,
@@ -185,13 +185,14 @@ export default function Societe() {
                     onChange={(e) => setMail(e.target.value)}
                     value={Mail}
                 />
-                <label htmlFor="TauxCNSSPPatronal">Taux CNSS Patronal </label>
+
+                <label htmlFor="TauxCNSSPatronal">Taux CNSS Patronal </label>
                 <input
                     type="number"
-                    id="TauxCNSSPPatronal"
-                    name="TauxCNSSPPatronal"
-                    onChange={(e) => setTauxCNSSPPatronal(e.target.value)}
-                    value={TauxCNSSPPatronal}
+                    id="TauxCNSSPatronal"
+                    name="TauxCNSSPatronal"
+                    onChange={(e) => setTauxCNSSPatronal(e.target.value)}
+                    value={TauxCNSSPatronal}
                 />
                 <label htmlFor="TauxCNSSOuvriere">Taux CNSS Ouvriere</label>
                 <input
@@ -215,15 +216,15 @@ export default function Societe() {
                     id="TauxTFP"
                     name="TauxTFP"
                     onChange={(e) => setTauxTFP(e.target.value)}
-                    value={TauxTauxTFP}
+                    value={TauxTFP}
                 />
-                <label htmlFor="TauxFORPROLOS">Taux FORPROLOS</label>
+                <label htmlFor="TauxFORPROLOS">Taux FOPROLOS</label>
                 <input
                     type="number"
-                    id="TauxFORPROLOS"
-                    name="TauxFORPROLOS"
-                    onChange={(e) => setTauxFORPROLOS(e.target.value)}
-                    value={TauxTauxFORPROLOS}
+                    id="TauxFOPROLOS"
+                    name="TauxFOPROLOS"
+                    onChange={(e) => setTauxFOPROLOS(e.target.value)}
+                    value={TauxFOPROLOS}
                 />
                 <label htmlFor="AssuranceGroupe">Assurance Groupe</label>
                 <input
@@ -231,7 +232,7 @@ export default function Societe() {
                     id="AssuranceGroupe"
                     name="AssuranceGroupe"
                     onChange={(e) => setAssuranceGroupe(e.target.value)}
-                    value={TauxAssuranceGroupe}
+                    value={AssuranceGroupe}
                 />
                 <label htmlFor="TauxAssGroupePatronal">Taux Assurance Groupe Patronal</label>
                 <input
@@ -239,15 +240,15 @@ export default function Societe() {
                     id="TauxAssGroupePatronal"
                     name="TauxAssGroupePatronal"
                     onChange={(e) => setTauxAssGroupePatronal(e.target.value)}
-                    value={TauxTauxAssGroupePatronal}
+                    value={TauxAssGroupePatronal}
                 />
-                <label htmlFor="TauxAssuranceGroupeOuvriere">Taux Asuurance Groupe Ouvriere</label>
+                <label htmlFor="TauxAssGroupeOuvriere">Taux Asuurance Groupe Ouvriere</label>
                 <input
                     type="number"
-                    id="TauxAssuranceGroupeOuvriere"
-                    name="TauxAssuranceGroupeOuvriere"
-                    onChange={(e) => setTauxAssuranceGroupeOuvriere(e.target.value)}
-                    value={TauxTauxAssuranceGroupeOuvriere}
+                    id="TauxAssGroupeOuvriere"
+                    name="TauxAssGroupeOuvriere"
+                    onChange={(e) => setTauxAssGroupeOuvriere(e.target.value)}
+                    value={TauxAssGroupeOuvriere}
                 />
                 <label htmlFor="Banque">Banque</label>
                 <input
@@ -255,7 +256,7 @@ export default function Societe() {
                     id="Banque"
                     name="Banque"
                     onChange={(e) => setBanque(e.target.value)}
-                    value={TauxBanque}
+                    value={Banque}
                 />
                 <label htmlFor="RIB">RIB</label>
                 <input
@@ -263,12 +264,12 @@ export default function Societe() {
                     id="RIB"
                     name="RIB"
                     onChange={(e) => setRIB(e.target.value)}
-                    value={TauxRIB}
+                    value={RIB}
                 />
                 <button>Submit</button>
-                <button onClick={deleteAll}>DELETE ALL</button>
+                {/* <button onClick={deleteAll}>DELETE ALL</button> */}
             </form>
-            <ul>
+            {/* <ul>
                 {NomSocieteList.map((movie) => (
                     <li>
                         {movie.IDSociete} {movie.NomSociete}
@@ -296,7 +297,7 @@ export default function Societe() {
                         </button>
                     </li>
                 ))}
-            </ul>
+            </ul> */}
         </div>
     );
 }

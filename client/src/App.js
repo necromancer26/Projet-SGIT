@@ -11,7 +11,8 @@ import NeoNavbar from "./Components/NeoNavbar/NeoNavbar";
 import About from "./Pages/About/About";
 import Logiciel from "./Pages/Logiciels/logiciel";
 import EnCour from "./Pages/EnCour/EnCour";
-import TestingDb from "./Pages/TestingDb/TestingDb";
+//import TestingDb from "./Pages/societe/societe";
+import Societe from "./Pages/societe/societe";
 function App() {
   return (
     <div className="App">
@@ -22,7 +23,7 @@ function App() {
         <Route exact path="/about" component={About} />
         <Route exact path="/logiciel" component={Logiciel} />
         <Route exact path="/EnCour" component={EnCour} />
-        <Route exact path="/test" component={TestingDb} />
+        <Route exact path="/societe" component={Societe} />
       </Switch>
       <Footer />
     </div>
