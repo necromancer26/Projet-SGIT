@@ -7,7 +7,9 @@ export default function TestingDb() {
   const [reviewMovie, setReviewMovie] = useState("");
   const [movieReviewList, setMovieReviewList] = useState([]);
   const [review, setReview] = useState("");
+
   useEffect(() => {
+    console.log("loop");
     axios.get("http://localhost:3001/api/get").then((response) => {
       setMovieReviewList(response.data);
     });
@@ -79,18 +81,10 @@ export default function TestingDb() {
         <button>Submit</button>
         <button onClick={deleteAll}>DELETE ALL</button>
       </form>
-      <ul>
+      <ul className="movie-container">
         {movieReviewList.map((movie) => (
-          <li>
+          <li className="movie-card">
             {movie.movieName} {movie.movieReview}
-            <button
-              onClick={() => {
-                deleteReview(movie.movieName);
-              }}
-            >
-              {" "}
-              Delete
-            </button>
             <input
               type="text"
               // value={updatedReview}
@@ -104,6 +98,13 @@ export default function TestingDb() {
               }}
             >
               Update
+            </button>
+            <button
+              onClick={() => {
+                deleteReview(movie.movieName);
+              }}
+            >
+              Delete
             </button>
           </li>
         ))}
