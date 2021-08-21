@@ -71,7 +71,7 @@ export default function Register() {
         />
         <div className="button-container">
           <button>Submit</button>
-          <input type="reset" value="cancel" className="reset-button" />
+          <input type="reset" value="Cancel" className="reset-button" />
         </div>
       </form>
     </div>

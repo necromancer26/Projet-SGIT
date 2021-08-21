@@ -1,0 +1,44 @@
+.Dashboard {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+  color: #073b4c;
+}
+.table-societe {
+  font-size: 11px;
+  /* margin: 0 10px; */
+  width: 80%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.table-societe th {
+  text-align: center;
+  padding: 0 3px;
+}
+.table-societe td {
+  border-top: 1px solid #073b4c;
+  text-align: center;
+}
+.table-societe thead,
+.table-societe tfoot {
+  background-color: #073b4c;
+  color: #fff;
+}
+.buttons-table {
+}
+.buttons-table button {
+  background-color: #0077b6;
+  color: aliceblue;
+  border: none;
+  width: 80%;
+  margin: 2px 0;
+  border-radius: 10px;
+  transition: 0.4s all ease-in;
+}
+.buttons-table button:hover {
+  background-color: #a0c4ff;
+}

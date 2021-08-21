@@ -8,12 +8,22 @@ export default function AddProduit() {
   const [categorieProduit, setCategorieProduit] = useState("");
   const [detailProduit, setDetailProduit] = useState("");
   const [produits, setProduits] = useState([]);
+  const [click, setClick] = useState(false);
+  const handleClick = () => {
+    setClick(true);
+    // setClick(!click);
+  };
   useEffect(() => {
     axios.get("http://localhost:3001/api/produit/get").then((res) => {
       setProduits(res.data);
+      console.log("updated");
     });
-  }, []);
-  const handleSubmit = () => {
+    // return () => alert("goodbye component");
+  }, [click]);
+  useEffect(() => {}, [produits]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
     axios
       .post("http://localhost:3001/api/produit/insert", {
         nomProduit: nomProduit,
@@ -27,10 +37,26 @@ export default function AddProduit() {
       .catch((e) => console.log(e));
   };
 
+  const deleteProduit = (produitId) => {
+    axios
+      .delete(`http://localhost:3001/api/produit/delete/${produitId}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   return (
     <div className="Produit">
       <h1>Page Produit</h1>
-      <form className="produit-form" onSubmit={handleSubmit}>
+      <form
+        className="produit-form"
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+      >
         <label htmlFor="nom-produit">Nom Produit</label>
         <input
           type="text"
@@ -80,16 +106,29 @@ export default function AddProduit() {
           }}
           value={detailProduit}
         ></textarea>
-        <button>Ajouter Produit</button>
+        <button onClick={handleClick}>Ajouter Produit</button>
       </form>
-      {produits.map((produit) => (
-        <div>
-          <h2>{produit.NomProduit}</h2>
-          <h3>{produit.CodeProduit}</h3>
-          <h2>{produit.Categorie}</h2>
-          <h2>{produit.Detail}</h2>
-        </div>
-      ))}
+      <div className="produit-container">
+        {produits.map((produit) => (
+          <ul className="produit-card" key={produit.IDProduit}>
+            <li>{produit.NomProduit}</li>
+            <li>{produit.CodeProduit}</li>
+            <li>{produit.Categorie}</li>
+            <li>{produit.Detail}</li>
+            <li className="button-container">
+              <button
+                className="delete-produit-button"
+                onClick={() => {
+                  deleteProduit(produit.IDProduit);
+                }}
+              >
+                DELETE
+              </button>
+              <button className="edit-produit-button">EDIT</button>
+            </li>
+          </ul>
+        ))}
+      </div>
     </div>
   );
 }

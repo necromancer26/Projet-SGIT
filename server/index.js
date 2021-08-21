@@ -23,12 +23,9 @@ db.connect(function (error) {
 app.listen(3001, () => {
   console.log("running on port 3001");
 });
-app.get("/api/produit/get", (req, res) => {
-  const sqlSelect = "SELECT * FROM produit";
-  db.query(sqlSelect, (err, result) => {
-    res.send(result);
-  });
-});
+
+/* Backend Routes */
+
 app.post("/register", (req, res) => {
   const { nomUtilisateur, pseudoUtilisateur, mdpUtilisateur, mdpConfirm } =
     req.body;
@@ -44,6 +41,21 @@ app.post("/register", (req, res) => {
       }
     }
   );
+});
+app.get("/api/produit/get", (req, res) => {
+  const sqlSelect = "SELECT * FROM produit";
+  db.query(sqlSelect, (err, result) => {
+    res.send(result);
+  });
+});
+app.delete("/api/produit/delete/:idProduit", (req, res) => {
+  const idProduit = req.params.idProduit;
+  const sqlDelete = "DELETE FROM produit  WHERE IDProduit = ?";
+  db.query(sqlDelete, idProduit, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+  });
 });
 app.post("/api/produit/insert", (req, res) => {
   const { nomProduit, codeProduit, categorieProduit, detailProduit } = req.body;
@@ -66,7 +78,6 @@ app.get("/societe/get", (req, res) => {
   });
 });
 app.post("/societe/insert", (req, res) => {
-  console.log("in database");
   const {
     NomSociete,
     Adresse,
@@ -122,7 +133,15 @@ app.post("/societe/insert", (req, res) => {
     }
   );
 });
-
+app.delete("/societe/delete/:IDSociete", (req, res) => {
+  const IDSociete = req.params.IDSociete;
+  const sqlDelete = "DELETE FROM societe  WHERE IDSociete = ?";
+  db.query(sqlDelete, IDSociete, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+});
 /*
 INSERT INTO produit (CodeProduit,NomProduit,Categorie,Detail) VALUES (?,?,?,?)
 */
