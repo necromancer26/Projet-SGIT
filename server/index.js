@@ -2,7 +2,12 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 var cors = require("cors");
-
+const passport = require("passport");
+const passportLocal = require("passport-local").Strategy;
+const bcrypt = require("bcryptjs");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 app.use(cors()); // Use this after the variable declaration
 
 const db = mysql.createConnection({
@@ -12,6 +17,15 @@ const db = mysql.createConnection({
   database: "sgit",
 });
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(
+  session({ secret: "secretcode", resave: true, saveUninitialized: true })
+);
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cookieParser("secretcode"));
+app.use(passport.initialize());
+app.use(passport.session());
+
 db.connect(function (error) {
   if (!!error) {
     console.log(error.message);
@@ -42,6 +56,10 @@ app.post("/register", (req, res) => {
     }
   );
 });
+app.post("/login", (req, res) => {
+  console.log(req.body);
+});
+
 app.get("/api/produit/get", (req, res) => {
   const sqlSelect = "SELECT * FROM produit";
   db.query(sqlSelect, (err, result) => {

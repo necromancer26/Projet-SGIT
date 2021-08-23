@@ -11,7 +11,7 @@ import NeoNavbar from "./Components/NeoNavbar/NeoNavbar";
 import About from "./Pages/About/About";
 import Logiciel from "./Pages/Logiciels/logiciel";
 import EnCour from "./Pages/EnCour/EnCour";
-//import TestingDb from "./Pages/societe/societe";
+import Login from "./Pages/Login/Login";
 import Societe from "./Pages/societe/societe";
 import TestingDb from "./Pages/TestingDb/TestingDb";
 import AddProduit from "./Pages/AddProduit/AddProduit";
@@ -32,6 +32,7 @@ function App() {
         <Route exact path="/Produit" component={AddProduit} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/login" component={Login} />
       </Switch>
       <Footer />
     </div>

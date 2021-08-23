@@ -5,13 +5,13 @@
   justify-content: center;
   flex-direction: column;
   color: #264653;
-  height: 80vh;
+  /* height: 80vh; */
 }
 .Register h1 {
   text-decoration: underline #06d6a0;
   color: #ffd166;
   font-family: "Ubuntu", sans-serif;
-  margin: 0;
+  margin: 20px 0 0 0;
   padding: 10px 40px;
   border-radius: 10px;
   border: 2px solid #ef476f;
@@ -49,9 +49,9 @@
   height: 30px;
   transition: 0.4s all ease-in;
   text-align: center;
-  /* display: flex;
-  justify-content: flex-start;
-  align-items: flex-start; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .register-form .reset-button {
   padding: 0;
