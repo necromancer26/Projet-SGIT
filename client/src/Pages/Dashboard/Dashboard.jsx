@@ -1,8 +1,30 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Dashboard.css";
-
+import { Link } from "react-router-dom"
 export default function Dashboard() {
+
+  const [NomSociete, setNomSociete] = useState("");
+  const [Adresse, setAdresse] = useState("");
+  const [CodeCNSS, setCodeCNSS] = useState("");
+  const [MatriculeFiscal, setMatriculeFiscal] = useState("");
+  const [CodeTVA, setCodeTVA] = useState("");
+  const [CodeCategorie, setCodeCategorie] = useState("");
+  const [NombreEtsSecondaire, setNombreEtsSecondaire] = useState("");
+  const [Tel, setTel] = useState("");
+  const [Fax, setFax] = useState("");
+  const [Responsable, setResponsable] = useState("");
+  const [Mail, setMail] = useState("");
+  const [TauxCNSSPatronal, setTauxCNSSPatronal] = useState("");
+  const [TauxAccidentTravail, setTauxAccidentTravail] = useState("");
+  const [TauxCNSSOuvriere, setTauxCNSSOuvriere] = useState("");
+  const [TauxTFP, setTauxTFP] = useState("");
+  const [TauxFOPROLOS, setTauxFOPROLOS] = useState("");
+  const [AssuranceGroupe, setAssuranceGroupe] = useState("");
+  const [TauxAssGroupePatronal, setTauxAssGroupePatronal] = useState("");
+  const [TauxAssGroupeOuvriere, setTauxAssGroupeOuvriere] = useState("");
+  const [Banque, setBanque] = useState("");
+  const [RIB, setRIB] = useState("");
   const [societes, setSocietes] = useState([]);
   useEffect(() => {
     axios
@@ -23,6 +45,37 @@ export default function Dashboard() {
       })
       .catch((e) => {
         console.log(e);
+      });
+  };
+  const updateSociete = (societeID) => {
+    console.log(societeID);
+    axios
+      .put('http://localhost:3001/societe/update', {
+        NomSociete: NomSociete,
+        Adresse: Adresse,
+        CodeCNSS: CodeCNSS,
+        MatriculeFiscal: MatriculeFiscal,
+        CodeTVA: CodeTVA,
+        CodeCategorie: CodeCategorie,
+        NombreEtsSecondaire: NombreEtsSecondaire,
+        Tel: Tel,
+        Fax: Fax,
+        Responsable: Responsable,
+        Mail: Mail,
+        TauxCNSSPatronal: TauxCNSSPatronal,
+        TauxCNSSOuvriere: TauxCNSSOuvriere,
+        TauxAccidentTravail: TauxAccidentTravail,
+        TauxTFP: TauxTFP,
+        TauxFOPROLOS: TauxFOPROLOS,
+        AssuranceGroupe: AssuranceGroupe,
+        TauxAssGroupePatronal: TauxAssGroupePatronal,
+        TauxAssGroupeOuvriere: TauxAssGroupeOuvriere,
+        Banque: Banque,
+        RIB: RIB,
+      })
+      .then((res) => { })
+      .catch((err) => {
+        console.log(err);
       });
   };
   return (
@@ -84,15 +137,28 @@ export default function Dashboard() {
                       deleteSociete(societe.IDSociete);
                     }}
                   >
-                    DELETE
+                    Supprimer
                   </button>
-                  <button>EDIT</button>
+                  <button
+                    onClick={() => {
+                      updateSociete(societe.IDSociete);
+                    }}
+                  >
+                    Modifier
+                  </button>
+                  <Link to="/societe">
+                    <button>
+                      Ajouter
+                    </button>
+                  </Link>
+
+
                 </div>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+    </div >
   );
 }

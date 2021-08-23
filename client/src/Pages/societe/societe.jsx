@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./societe.css";
+import { Link } from "react-router-dom"
 
 export default function Societe() {
   const [NomSociete, setNomSociete] = useState("");
@@ -286,10 +287,14 @@ export default function Societe() {
           }}
           value={RIB}
         />
-        <button>Submit</button>
-        {/* <button onClick={deleteAll}>DELETE ALL</button> */}
+        <button>Ajouter</button>
+        <Link to="/dashboard">
+          <button>
+            Retour
+          </button>
+        </Link>        {/* <button onClick={deleteAll}>DELETE ALL</button> */}
       </form>
-      {societe.map((societe) => (
+      {/* {societe.map((societe) => (
         <div>
           <h2>{societe.NomSociete}</h2>
           <h2>{societe.Adresse}</h2>
@@ -313,7 +318,7 @@ export default function Societe() {
           <h2>{societe.Banque}</h2>
           <h2>{societe.RIB}</h2>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 }
