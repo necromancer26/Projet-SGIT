@@ -3,10 +3,10 @@ import axios from "axios";
 import "./Dashboard.css";
 import { Link } from "react-router-dom"
 export default function Dashboard() {
-  const [nomProduit, setNomProduit] = useState("");
-  const [codeProduit, setCodeProduit] = useState("");
-  const [categorieProduit, setCategorieProduit] = useState("");
-  const [detailProduit, setDetailProduit] = useState("");
+  const [NomProduit, setNomProduit] = useState("");
+  const [CodeProduit, setCodeProduit] = useState("");
+  const [Categorie, setCategorieProduit] = useState("");
+  const [DetailProduit, setDetailProduit] = useState("");
   const [produit, setProduits] = useState([]);
   const [NomSociete] = useState("");
   const [Adresse] = useState("");
@@ -118,10 +118,10 @@ export default function Dashboard() {
     console.log(produitID);
     axios
       .put('http://localhost:3001/api/produit/update', {
-        nomProduit: nomProduit,
-        codeProduit: codeProduit,
-        categorieProduit: categorieProduit,
-        detailProduit: detailProduit,
+        NomProduit: NomProduit,
+        CodeProduit: CodeProduit,
+        Categorie: Categorie,
+        DetailProduit: DetailProduit,
       })
       .then((res) => { })
       .catch((err) => {
@@ -197,8 +197,6 @@ export default function Dashboard() {
                 </button>
               </div>
             </tr>
-
-
           ))
           }
         </tbody >

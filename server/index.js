@@ -89,7 +89,7 @@ app.post("/api/produit/insert", (req, res) => {
     }
   );
 });
-app.put("/api/update", (req, res) => {
+app.put("/api/produit/update", (req, res) => {
   console.log("updating");
   const CodeProduit = req.body.CodeProduit;
   const NomProduit = req.body.NomProduit;
