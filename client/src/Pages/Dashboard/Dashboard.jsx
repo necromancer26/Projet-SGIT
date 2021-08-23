@@ -3,28 +3,32 @@ import axios from "axios";
 import "./Dashboard.css";
 import { Link } from "react-router-dom"
 export default function Dashboard() {
-
-  const [NomSociete, setNomSociete] = useState("");
-  const [Adresse, setAdresse] = useState("");
-  const [CodeCNSS, setCodeCNSS] = useState("");
-  const [MatriculeFiscal, setMatriculeFiscal] = useState("");
-  const [CodeTVA, setCodeTVA] = useState("");
-  const [CodeCategorie, setCodeCategorie] = useState("");
-  const [NombreEtsSecondaire, setNombreEtsSecondaire] = useState("");
-  const [Tel, setTel] = useState("");
-  const [Fax, setFax] = useState("");
-  const [Responsable, setResponsable] = useState("");
-  const [Mail, setMail] = useState("");
-  const [TauxCNSSPatronal, setTauxCNSSPatronal] = useState("");
-  const [TauxAccidentTravail, setTauxAccidentTravail] = useState("");
-  const [TauxCNSSOuvriere, setTauxCNSSOuvriere] = useState("");
-  const [TauxTFP, setTauxTFP] = useState("");
-  const [TauxFOPROLOS, setTauxFOPROLOS] = useState("");
-  const [AssuranceGroupe, setAssuranceGroupe] = useState("");
-  const [TauxAssGroupePatronal, setTauxAssGroupePatronal] = useState("");
-  const [TauxAssGroupeOuvriere, setTauxAssGroupeOuvriere] = useState("");
-  const [Banque, setBanque] = useState("");
-  const [RIB, setRIB] = useState("");
+  // const [nomProduit, setNomProduit] = useState("");
+  // const [codeProduit, setCodeProduit] = useState("");
+  // const [categorieProduit, setCategorieProduit] = useState("");
+  // const [detailProduit, setDetailProduit] = useState("");
+  const [produit, setProduits] = useState([]);
+  const [NomSociete] = useState("");
+  const [Adresse] = useState("");
+  const [CodeCNSS] = useState("");
+  const [MatriculeFiscal] = useState("");
+  const [CodeTVA] = useState("");
+  const [CodeCategorie] = useState("");
+  const [NombreEtsSecondaire] = useState("");
+  const [Tel] = useState("");
+  const [Fax] = useState("");
+  const [Responsable] = useState("");
+  const [Mail] = useState("");
+  const [TauxCNSSPatronal] = useState("");
+  const [TauxAccidentTravail] = useState("");
+  const [TauxCNSSOuvriere] = useState("");
+  const [TauxTFP] = useState("");
+  const [TauxFOPROLOS] = useState("");
+  const [AssuranceGroupe] = useState("");
+  const [TauxAssGroupePatronal] = useState("");
+  const [TauxAssGroupeOuvriere] = useState("");
+  const [Banque] = useState("");
+  const [RIB] = useState("");
   const [societes, setSocietes] = useState([]);
   useEffect(() => {
     axios
@@ -76,6 +80,27 @@ export default function Dashboard() {
       .then((res) => { })
       .catch((err) => {
         console.log(err);
+      });
+  };
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/api/produit/get")
+      .then((response) => {
+        console.log(response.data);
+        setProduits(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  const deleteProduit = (produitID) => {
+    axios
+      .delete(`http://localhost:3001/api/produit/delete/${produitID}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
       });
   };
   return (
@@ -130,35 +155,82 @@ export default function Dashboard() {
               <td>{societe.TauxAssGroupePatronal}</td>
               <td>{societe.Banque}</td>
               <td>{societe.RIB}</td>
-              <td>
-                <div className="buttons-table">
-                  <button
+              < div className="buttons-table" >
+                <button
+                  onClick={() => {
+                    deleteSociete(societe.IDSociete);
+                  }}
+                >
+                  Supprimer
+                </button>
+                <button
+                  onClick={() => {
+                    updateSociete(societe.IDSociete);
+                  }}
+                >
+                  Modifier
+                </button>
+              </div>
+            </tr>
+
+
+          ))
+          }
+        </tbody >
+      </table >
+      <div>
+        <table className="table-produit">
+          <thread>
+            <tr>
+              <th>IDproduit</th>
+              <th>CodeProduit</th>
+              <th>NomProduit</th>
+              <th>Categorie</th>
+              <th>DetailProduit</th>
+              <th>Operation</th>
+            </tr>
+          </thread>
+          <tbody>
+            {produit.map((produit) => (
+              <tr key={produit.IDProduit}>
+                <td>{produit.CodeProduit}</td>
+                <td>{produit.NomProduit}</td>
+                <td>{produit.Categorie}</td>
+                <td>{produit.DetailProduit}</td>
+                <td>
+                  <div className="buttons-table">
+                    <button
+                      onClick={() => {
+                        deleteProduit(produit.IDProduit);
+                      }}
+                    >
+                      Supprimer
+                    </button>
+                    {/* <button
                     onClick={() => {
-                      deleteSociete(societe.IDSociete);
-                    }}
-                  >
-                    Supprimer
-                  </button>
-                  <button
-                    onClick={() => {
-                      updateSociete(societe.IDSociete);
+                      updateProduit(produit.IDProduit);
                     }}
                   >
                     Modifier
-                  </button>
-                  <Link to="/societe">
-                    <button>
-                      Ajouter
-                    </button>
-                  </Link>
+                  </button> */}
 
-
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div >
-  );
-}
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <Link to="/societe">
+        <button>
+          Ajouter societe
+        </button>
+      </Link>
+      <Link to="/produit">
+        <button>
+          Ajouter produit
+        </button>
+      </Link>
+    </div>
+  )
+};

@@ -3,6 +3,8 @@ import axios from "axios";
 import "./societe.css";
 import { Link } from "react-router-dom"
 
+
+
 export default function Societe() {
   const [NomSociete, setNomSociete] = useState("");
   const [Adresse, setAdresse] = useState("");
@@ -65,7 +67,9 @@ export default function Societe() {
       .catch((e) => console.log(e));
   };
   return (
+
     <div className="societe">
+      <h1>Page Societe</h1>
       <form
         onSubmit={(e) => {
           handleSubmit(e);
@@ -203,7 +207,7 @@ export default function Societe() {
           }}
           value={TauxCNSSOuvriere}
         />
-        <label htmlFor="TauxAccidentTravail">Taux CNSS Ouvriere</label>
+        <label htmlFor="TauxAccidentTravail">Taux Accident Travail</label>
         <input
           type="number"
           id="TauxAccidentTravail"
@@ -256,7 +260,7 @@ export default function Societe() {
           value={TauxAssGroupePatronal}
         />
         <label htmlFor="TauxAssGroupeOuvriere">
-          Taux Asuurance Groupe Ouvriere
+          Taux Assurance Groupe Ouvriere
         </label>
         <input
           type="number"
@@ -288,13 +292,13 @@ export default function Societe() {
           value={RIB}
         />
         <button>Ajouter</button>
-        <Link to="/dashboard">
+        <Link to="/dashboard" >
           <button>
             Retour
           </button>
         </Link>        {/* <button onClick={deleteAll}>DELETE ALL</button> */}
       </form>
-      {/* {societe.map((societe) => (
+      {societe.map((societe) => (
         <div>
           <h2>{societe.NomSociete}</h2>
           <h2>{societe.Adresse}</h2>
@@ -318,7 +322,7 @@ export default function Societe() {
           <h2>{societe.Banque}</h2>
           <h2>{societe.RIB}</h2>
         </div>
-      ))} */}
+      ))}
     </div>
   );
 }

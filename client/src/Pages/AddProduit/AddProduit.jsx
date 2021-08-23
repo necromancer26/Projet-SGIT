@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./AddProduit.css";
+import { Link } from "react-router-dom"
+
 
 export default function AddProduit() {
   const [nomProduit, setNomProduit] = useState("");
@@ -20,7 +22,7 @@ export default function AddProduit() {
     });
     // return () => alert("goodbye component");
   }, [click]);
-  useEffect(() => {}, [produits]);
+  useEffect(() => { }, [produits]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -107,6 +109,11 @@ export default function AddProduit() {
           value={detailProduit}
         ></textarea>
         <button onClick={handleClick}>Ajouter Produit</button>
+        <Link to="/dashboard" >
+          <button>
+            Retour
+          </button>
+        </Link>
       </form>
       <div className="produit-container">
         {produits.map((produit) => (
@@ -124,6 +131,7 @@ export default function AddProduit() {
               >
                 DELETE
               </button>
+
               <button className="edit-produit-button">EDIT</button>
             </li>
           </ul>

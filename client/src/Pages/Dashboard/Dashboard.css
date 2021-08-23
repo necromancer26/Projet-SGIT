@@ -10,7 +10,7 @@
 }
 .table-societe {
   font-size: 11px;
-  /* margin: 0 10px; */
+   margin: 0 10px; 
   width: 80%;
   border-radius: 10px;
   overflow: hidden;
@@ -41,4 +41,24 @@
 }
 .buttons-table button:hover {
   background-color: #a0c4ff;
+}
+.table-produit{
+  font-size: 11px;
+   margin: 0 10px; 
+  width: 80%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.table-produit th {
+  text-align: center;
+  padding: 0 3px;
+}
+.table-produit td {
+  border-top: 1px solid #073b4c;
+  text-align: center;
+}
+.table-produit thead,
+.table-produit tfoot {
+  background-color: #073b4c;
+  color: #fff;
 }
