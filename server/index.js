@@ -89,6 +89,23 @@ app.post("/api/produit/insert", (req, res) => {
     }
   );
 });
+app.put("/api/update", (req, res) => {
+  console.log("updating");
+  const CodeProduit = req.body.CodeProduit;
+  const NomProduit = req.body.NomProduit;
+  const Categorie = req.body.Categorie;
+  const DetailProduit = req.body.DetailProduit;
+
+  console.log(CodeProduit);
+  console.log(NomProduit);
+  consolde.log(Categorie);
+  console.log(DetailProduit);
+  const sqlUpdate =
+    "UPDATE produit SET CodeProduit,NomProduit,Categorie,DetailProduit = ?,?,?,? WHERE CodeProduit = ?";
+  db.query(sqlUpdate, [CodeProduit, NomProduit, Categorie, DetailProduit, CodeProduit], (err, result) => {
+    if (err) console.log(err);
+  });
+});
 app.get("/societe/get", (req, res) => {
   const sqlSelect = "SELECT * FROM societe";
   db.query(sqlSelect, (err, result) => {
@@ -190,9 +207,10 @@ app.put("/societe/update", (req, res) => {
     if (err) console.log(err);
   });
 });
-/*
-INSERT INTO produit (CodeProduit,NomProduit,Categorie,Detail) VALUES (?,?,?,?)
-*/
+
+
+// INSERT INTO produit (CodeProduit,NomProduit,Categorie,Detail) VALUES (?,?,?,?)
+// */
 // app.get("/api/get", (req, res) => {
 //   const sqlSelect = "SELECT * FROM movie_reviews";
 //   db.query(sqlSelect, (err, result) => {

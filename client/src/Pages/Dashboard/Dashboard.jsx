@@ -3,10 +3,10 @@ import axios from "axios";
 import "./Dashboard.css";
 import { Link } from "react-router-dom"
 export default function Dashboard() {
-  // const [nomProduit, setNomProduit] = useState("");
-  // const [codeProduit, setCodeProduit] = useState("");
-  // const [categorieProduit, setCategorieProduit] = useState("");
-  // const [detailProduit, setDetailProduit] = useState("");
+  const [nomProduit, setNomProduit] = useState("");
+  const [codeProduit, setCodeProduit] = useState("");
+  const [categorieProduit, setCategorieProduit] = useState("");
+  const [detailProduit, setDetailProduit] = useState("");
   const [produit, setProduits] = useState([]);
   const [NomSociete] = useState("");
   const [Adresse] = useState("");
@@ -93,6 +93,17 @@ export default function Dashboard() {
         console.log(error);
       });
   }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/api/produit/get")
+      .then((response) => {
+        console.log(response.data);
+        setProduits(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   const deleteProduit = (produitID) => {
     axios
       .delete(`http://localhost:3001/api/produit/delete/${produitID}`)
@@ -101,6 +112,20 @@ export default function Dashboard() {
       })
       .catch((e) => {
         console.log(e);
+      });
+  };
+  const updateProduit = (produitID) => {
+    console.log(produitID);
+    axios
+      .put('http://localhost:3001/api/produit/update', {
+        nomProduit: nomProduit,
+        codeProduit: codeProduit,
+        categorieProduit: categorieProduit,
+        detailProduit: detailProduit,
+      })
+      .then((res) => { })
+      .catch((err) => {
+        console.log(err);
       });
   };
   return (
@@ -206,13 +231,13 @@ export default function Dashboard() {
                     >
                       Supprimer
                     </button>
-                    {/* <button
-                    onClick={() => {
-                      updateProduit(produit.IDProduit);
-                    }}
-                  >
-                    Modifier
-                  </button> */}
+                    <button
+                      onClick={() => {
+                        updateProduit(produit.IDProduit);
+                      }}
+                    >
+                      Modifier
+                    </button>
 
                   </div>
                 </td>
