@@ -89,14 +89,10 @@ export default function AddProduit() {
           value={categorieProduit}
         >
           <option value="">--Veuillez choisir une option--</option>
-          <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
-          <option value="hamster">Hamster</option>
-          <option value="parrot">Parrot</option>
-          <option value="spider">Spider</option>
-          <option value="goldfish">Goldfish</option>
+          <option value="logiciel">Logiciel</option>
+
         </select>
-        <label htmlFor="detail-produit">Tell us your story:</label>
+        <label htmlFor="detail-produit">Detail produit</label>
         <textarea
           id="detail-produit"
           name="detail"

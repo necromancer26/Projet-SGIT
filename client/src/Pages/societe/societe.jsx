@@ -298,7 +298,7 @@ export default function Societe() {
           </button>
         </Link>        {/* <button onClick={deleteAll}>DELETE ALL</button> */}
       </form>
-      {societe.map((societe) => (
+      {/* {societe.map((societe) => (
         <div>
           <h2>{societe.NomSociete}</h2>
           <h2>{societe.Adresse}</h2>
@@ -322,7 +322,7 @@ export default function Societe() {
           <h2>{societe.Banque}</h2>
           <h2>{societe.RIB}</h2>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 }

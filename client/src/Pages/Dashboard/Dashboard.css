@@ -11,6 +11,7 @@
 .table-societe {
   font-size: 11px;
    margin: 0 10px; 
+   margin: 30px 10px;
   width: 80%;
   border-radius: 10px;
   overflow: hidden;
@@ -22,14 +23,39 @@
 .table-societe td {
   border-top: 1px solid #073b4c;
   text-align: center;
+
 }
 .table-societe thead,
 .table-societe tfoot {
   background-color: #073b4c;
   color: #fff;
 }
-.buttons-table {
+
+.Dashboard-button {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  
 }
+.Dashboard-button1 button {
+  margin-right: 20px;
+  background-color: #073b4c;
+  color: aliceblue;
+  border: none;
+  width: 100%;
+  border-radius: 10px;
+  transition: 0.4s all ease-in;
+}
+.Dashboard-button2 button {
+  margin-left: 20px;
+  background-color: #073b4c;
+  color: aliceblue;
+  border: none;
+  width: 100%;
+  border-radius: 10px;
+  transition: 0.4s all ease-in;
+  }
 .buttons-table button {
   background-color: #0077b6;
   color: aliceblue;

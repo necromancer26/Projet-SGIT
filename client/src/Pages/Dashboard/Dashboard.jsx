@@ -3,10 +3,10 @@ import axios from "axios";
 import "./Dashboard.css";
 import { Link } from "react-router-dom"
 export default function Dashboard() {
-  const [NomProduit, setNomProduit] = useState("");
-  const [CodeProduit, setCodeProduit] = useState("");
-  const [Categorie, setCategorieProduit] = useState("");
-  const [DetailProduit, setDetailProduit] = useState("");
+  const [NomProduit] = useState("");
+  const [CodeProduit] = useState("");
+  const [Categorie] = useState("");
+  const [DetailProduit] = useState("");
   const [produit, setProduits] = useState([]);
   const [NomSociete] = useState("");
   const [Adresse] = useState("");
@@ -131,6 +131,22 @@ export default function Dashboard() {
   return (
     <div className="Dashboard">
       <h1>Admin Page</h1>
+      <div className="Dashboard-button">
+        <div className="Dashboard-button1">
+          <Link to="/societe">
+            <button>
+              Ajouter societe
+            </button>
+          </Link>
+        </div>
+        <div className="Dashboard-button2">
+          <Link to="/produit">
+            <button>
+              Ajouter produit
+            </button>
+          </Link>
+        </div>
+      </div>
       <table className="table-societe">
         <thead>
           <tr>
@@ -201,59 +217,45 @@ export default function Dashboard() {
           }
         </tbody >
       </table >
-      <div>
-        <table className="table-produit">
-          <thread>
-            <tr>
-              <th>IDproduit</th>
-              <th>CodeProduit</th>
-              <th>NomProduit</th>
-              <th>Categorie</th>
-              <th>DetailProduit</th>
-              <th>Operation</th>
+      <table className="table-societe">
+        <thead>
+          <tr>
+            <th>CodeProduit</th>
+            <th>NomProduit</th>
+            <th>Categorie</th>
+            <th>DetailProduit</th>
+            <th>Operation</th>
+          </tr>
+        </thead>
+        <tbody>
+          {produit.map((produit) => (
+            <tr key={produit.IDProduit}>
+              <td>{produit.CodeProduit}</td>
+              <td>{produit.NomProduit}</td>
+              <td>{produit.Categorie}</td>
+              <td>{produit.Detail}</td>
+              <td>
+                <div className="buttons-table">
+                  <button
+                    onClick={() => {
+                      deleteProduit(produit.IDProduit);
+                    }}
+                  >
+                    Supprimer
+                  </button>
+                  <button
+                    onClick={() => {
+                      updateProduit(produit.IDProduit);
+                    }}
+                  >
+                    Modifier
+                  </button>
+                </div>
+              </td>
             </tr>
-          </thread>
-          <tbody>
-            {produit.map((produit) => (
-              <tr key={produit.IDProduit}>
-                <td>{produit.CodeProduit}</td>
-                <td>{produit.NomProduit}</td>
-                <td>{produit.Categorie}</td>
-                <td>{produit.DetailProduit}</td>
-                <td>
-                  <div className="buttons-table">
-                    <button
-                      onClick={() => {
-                        deleteProduit(produit.IDProduit);
-                      }}
-                    >
-                      Supprimer
-                    </button>
-                    <button
-                      onClick={() => {
-                        updateProduit(produit.IDProduit);
-                      }}
-                    >
-                      Modifier
-                    </button>
-
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <Link to="/societe">
-        <button>
-          Ajouter societe
-        </button>
-      </Link>
-      <Link to="/produit">
-        <button>
-          Ajouter produit
-        </button>
-      </Link>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 };
