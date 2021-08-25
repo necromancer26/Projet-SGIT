@@ -3,11 +3,7 @@ import axios from "axios";
 import "./Dashboard.css";
 import { Link } from "react-router-dom"
 export default function Dashboard() {
-  // const [NomProduit] = useState("");
-  // const [CodeProduit] = useState("");
-  // const [Categorie] = useState("");
-  // const [DetailProduit] = useState("");
-  const [produit, setProduits] = useState([]);
+  const [produits, setProduits] = useState([]);
   const [NomSociete] = useState("");
   const [Adresse] = useState("");
   const [CodeCNSS] = useState("");
@@ -87,19 +83,12 @@ export default function Dashboard() {
     axios
       .get("http://localhost:3001/api/produit/get")
       .then((response) => {
-        setProduits(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/api/produit/get")
-      .then((response) => {
-        console.log(response.data);
-        setProduits(response.data);
-      })
+        const testTable=response.data
+        testTable.map(val=>(val= {toggling:false,word:"hellooooo",...val}))
+        setProduits(testTable);
+        console.log("produits",testTable);
+      }
+      )
       .catch((error) => {
         console.log(error);
       });
@@ -228,7 +217,7 @@ export default function Dashboard() {
           </tr>
         </thead>
         <tbody>
-          {!toggleEdit && produit.map((produit) => (
+          {!toggleEdit && produits.map((produit) => (
             <tr key={produit.IDProduit}>
               <td>{produit.CodeProduit}</td>
               <td>{produit.NomProduit}</td>
@@ -250,7 +239,7 @@ export default function Dashboard() {
               </td>
             </tr>)
           )}
-          {toggleEdit && produit.map((produit) => (
+          {toggleEdit && produits.map((produit) => (
             <tr key={produit.IDProduit}>
               <td><input type="text"
                 id="code-produit"
