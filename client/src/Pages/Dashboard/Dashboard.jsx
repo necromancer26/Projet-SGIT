@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Dashboard.css";
-import { Link } from "react-router-dom"
+import ProductRow from "../../Components/ProductRow/ProductRow";
+import { Link } from "react-router-dom";
 export default function Dashboard() {
   const [produits, setProduits] = useState([]);
   const [NomSociete] = useState("");
@@ -26,17 +27,25 @@ export default function Dashboard() {
   const [Banque] = useState("");
   const [RIB] = useState("");
   const [societes, setSocietes] = useState([]);
-  const [toggleEdit, setToggleEdit] = useState(false)
+  // const [toggleEdit, setToggleEdit] = useState(false)
   useEffect(() => {
+    axios
+      .get("http://localhost:3001/api/produit/get")
+      .then((response) => {
+        setProduits(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     axios
       .get("http://localhost:3001/societe/get")
       .then((response) => {
-        console.log(response.data);
         setSocietes(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
+    console.log("Hello World!");
   }, []);
   const deleteSociete = (societeId) => {
     axios
@@ -51,7 +60,7 @@ export default function Dashboard() {
   const updateSociete = (societeID) => {
     console.log(societeID);
     axios
-      .put('http://localhost:3001/societe/update', {
+      .put("http://localhost:3001/societe/update", {
         NomSociete: NomSociete,
         Adresse: Adresse,
         CodeCNSS: CodeCNSS,
@@ -74,65 +83,24 @@ export default function Dashboard() {
         Banque: Banque,
         RIB: RIB,
       })
-      .then((res) => { })
+      .then((res) => {})
       .catch((err) => {
         console.log(err);
       });
   };
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/api/produit/get")
-      .then((response) => {
-        const testTable=response.data
-        testTable.map(val=>(val= {toggling:false,word:"hellooooo",...val}))
-        setProduits(testTable);
-        console.log("produits",testTable);
-      }
-      )
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-  const deleteProduit = (produitID) => {
-    axios
-      .delete(`http://localhost:3001/api/produit/delete/${produitID}`)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-  // const updateProduit = (produitID) => {
-  //   console.log(produitID);
-  //   axios
-  //     .put('http://localhost:3001/api/produit/update', {
-  //       NomProduit: NomProduit,
-  //       CodeProduit: CodeProduit,
-  //       Categorie: Categorie,
-  //       DetailProduit: DetailProduit,
-  //     })
-  //     .then((res) => { })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+
   return (
     <div className="Dashboard">
       <h1>Admin Page</h1>
       <div className="Dashboard-button">
         <div className="Dashboard-button1">
           <Link to="/societe">
-            <button>
-              Ajouter societe
-            </button>
+            <button>Ajouter societe</button>
           </Link>
         </div>
         <div className="Dashboard-button2">
           <Link to="/produit">
-            <button>
-              Ajouter produit
-            </button>
+            <button>Ajouter produit</button>
           </Link>
         </div>
       </div>
@@ -185,7 +153,7 @@ export default function Dashboard() {
               <td>{societe.TauxAssGroupePatronal}</td>
               <td>{societe.Banque}</td>
               <td>{societe.RIB}</td>
-              < div className="buttons-table" >
+              <div className="buttons-table">
                 <button
                   onClick={() => {
                     deleteSociete(societe.IDSociete);
@@ -202,10 +170,9 @@ export default function Dashboard() {
                 </button>
               </div>
             </tr>
-          ))
-          }
-        </tbody >
-      </table >
+          ))}
+        </tbody>
+      </table>
       <table className="table-societe">
         <thead>
           <tr>
@@ -217,80 +184,18 @@ export default function Dashboard() {
           </tr>
         </thead>
         <tbody>
-          {!toggleEdit && produits.map((produit) => (
-            <tr key={produit.IDProduit}>
-              <td>{produit.CodeProduit}</td>
-              <td>{produit.NomProduit}</td>
-              <td>{produit.Categorie}</td>
-              <td>{produit.Detail}</td>
-              <td>
-                <div className="buttons-table-produit">
-                  <button
-                    onClick={() => {
-                      deleteProduit(produit.IDProduit);
-                    }}
-                  >
-                    Supprimer
-                  </button>
-                  <button onClick={() => { setToggleEdit(!toggleEdit) }}>
-                    Modifier
-                  </button>
-                </div>
-              </td>
-            </tr>)
-          )}
-          {toggleEdit && produits.map((produit) => (
-            <tr key={produit.IDProduit}>
-              <td><input type="text"
-                id="code-produit"
-                name="code" value={produit.CodeProduit} /></td>
-              <td><input type="text"
-                id="nom-produit"
-                name="nom" value={produit.NomProduit} /></td>
-              <td>
-                <select
-                  id="categorie-produit"
-                  name="categorie"
-                  onChange={(e) => {
-                    // setCategorieProduit(e.target.value);
-                  }}
-                  value={produit.Categorie}
-                >
-                  <option value="produit.Categorie">{produit.Categorie}</option>
-                  <option value="logiciel">Logiciel</option>
-
-                </select>
-              </td>
-              <td>
-                <textarea
-                  id="detail-produit"
-                  name="detail"
-                  rows="5"
-                  cols="33"
-                  placeholder="..."
-                  onChange={(e) => {
-                  }}
-                  value={produit.Detail}
-                ></textarea>
-              </td>
-              <td>
-                <div className="buttons-table-produit">
-                  <button
-                    onClick={() => {
-                      deleteProduit(produit.IDProduit);
-                    }}
-                  >
-                    Supprimer
-                  </button>
-                  <button onClick={() => { setToggleEdit(!toggleEdit) }}>
-                    Modifier
-                  </button>
-                </div>
-              </td>
-            </tr>)
-          )}
+          {produits.map((produit) => (
+            <ProductRow
+              IDProduit={produit.IDProduit}
+              CodeProduit={produit.CodeProduit}
+              NomProduit={produit.NomProduit}
+              Categorie={produit.Categorie}
+              Detail={produit.Detail}
+              produits={produit}
+            />
+          ))}
         </tbody>
       </table>
     </div>
-  )
-};
+  );
+}

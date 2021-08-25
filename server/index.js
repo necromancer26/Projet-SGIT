@@ -118,16 +118,17 @@ app.put("/api/produit/update", (req, res) => {
   const NomProduit = req.body.NomProduit;
   const Categorie = req.body.Categorie;
   const DetailProduit = req.body.DetailProduit;
-
-  console.log(CodeProduit);
-  console.log(NomProduit);
-  console.log(Categorie);
-  console.log(DetailProduit);
+  const idProduit = req.body.IDProduit;
   const sqlUpdate =
-    "UPDATE produit SET CodeProduit,NomProduit,Categorie,DetailProduit = ?,?,?,? WHERE CodeProduit = ?";
-  db.query(sqlUpdate, [CodeProduit, NomProduit, Categorie, DetailProduit, CodeProduit], (err, result) => {
-    if (err) console.log(err);
-  });
+    "UPDATE produit SET CodeProduit = ?, NomProduit = ?, Categorie = ?, Detail = ?  WHERE IDProduit = ? ";
+  db.query(
+    sqlUpdate,
+    [CodeProduit, NomProduit, Categorie, DetailProduit, idProduit],
+    (err, result) => {
+      if (err) console.log(err);
+      if (result) res.send(result);
+    }
+  );
 });
 app.get("/societe/get", (req, res) => {
   const sqlSelect = "SELECT * FROM societe";
@@ -211,7 +212,7 @@ app.put("/societe/update", (req, res) => {
   const NombreEtsSecondaire = req.body.NombreEtsSecondaire;
   const Tel = req.body.Tel;
   const Fax = req.body.Fax;
-  const Responsable = req.body.Responsable
+  const Responsable = req.body.Responsable;
   const Mail = req.body.Mail;
   const TauxCNSSPatronal = req.body.TauxCNSSPatronal;
   const TauxCNSSOuvriere = req.body.TauxCNSSOuvriere;
@@ -226,11 +227,37 @@ app.put("/societe/update", (req, res) => {
 
   const sqlUpdate =
     "UPDATE societe SET NomSociete, Adresse, CodeCNSS, MatriculeFiscal, CodeTVA, CodeCategorie, NombreEtsSecondaire, Tel, Fax, Responsable, Mail, TauxCNSSPatronal, TauxCNSSOuvriere, TauxAccidentTravail, TauxTFP, TauxFOPROLOS, AssuranceGroupe, TauxAssGroupePatronal, TauxAssGroupeOuvriere, Banque, RIB = ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? WHERE NomSociete = ?";
-  db.query(sqlUpdate, [NomSociete, Adresse, CodeCNSS, MatriculeFiscal, CodeTVA, CodeCategorie, NombreEtsSecondaire, Tel, Fax, Responsable, Mail, TauxCNSSPatronal, TauxCNSSOuvriere, TauxAccidentTravail, TauxTFP, TauxFOPROLOS, AssuranceGroupe, TauxAssGroupePatronal, TauxAssGroupeOuvriere, Banque, RIB, NomSociete], (err, result) => {
-    if (err) console.log(err);
-  });
+  db.query(
+    sqlUpdate,
+    [
+      NomSociete,
+      Adresse,
+      CodeCNSS,
+      MatriculeFiscal,
+      CodeTVA,
+      CodeCategorie,
+      NombreEtsSecondaire,
+      Tel,
+      Fax,
+      Responsable,
+      Mail,
+      TauxCNSSPatronal,
+      TauxCNSSOuvriere,
+      TauxAccidentTravail,
+      TauxTFP,
+      TauxFOPROLOS,
+      AssuranceGroupe,
+      TauxAssGroupePatronal,
+      TauxAssGroupeOuvriere,
+      Banque,
+      RIB,
+      NomSociete,
+    ],
+    (err, result) => {
+      if (err) console.log(err);
+    }
+  );
 });
-
 
 // INSERT INTO produit (CodeProduit,NomProduit,Categorie,Detail) VALUES (?,?,?,?)
 // app.get("/api/get", (req, res) => {
