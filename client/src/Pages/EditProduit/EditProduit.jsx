@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./AddProduit.css";
+
 import { Link } from "react-router-dom"
 
 
@@ -10,24 +10,19 @@ export default function AddProduit() {
   const [categorieProduit, setCategorieProduit] = useState("");
   const [detailProduit, setDetailProduit] = useState("");
   const [produits, setProduits] = useState([]);
-  const [click, setClick] = useState(false);
-  const handleClick = () => {
-    setClick(true);
-    // setClick(!click);
-  };
   useEffect(() => {
     axios.get("http://localhost:3001/api/produit/get").then((res) => {
       setProduits(res.data);
       console.log("updated");
     });
     // return () => alert("goodbye component");
-  }, [click]);
+  }, []);
   useEffect(() => { }, [produits]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:3001/api/produit/insert", {
+      .put("http://localhost:3001/api/produit/insert", {
         nomProduit: nomProduit,
         codeProduit: codeProduit,
         categorieProduit: categorieProduit,
@@ -104,35 +99,13 @@ export default function AddProduit() {
           }}
           value={detailProduit}
         ></textarea>
-        <button onClick={handleClick}>Ajouter Produit</button>
+        <button>Modifier Produit</button>
         <Link to="/dashboard" >
           <button>
             Retour
           </button>
         </Link>
       </form>
-      <div className="produit-container">
-        {produits.map((produit) => (
-          <ul className="produit-card" key={produit.IDProduit}>
-            <li>{produit.NomProduit}</li>
-            <li>{produit.CodeProduit}</li>
-            <li>{produit.Categorie}</li>
-            <li>{produit.Detail}</li>
-            <li className="button-container">
-              <button
-                className="delete-produit-button"
-                onClick={() => {
-                  deleteProduit(produit.IDProduit);
-                }}
-              >
-                DELETE
-              </button>
-
-            <button className="edit-produit-button">EDIT</button>
-            </li>
-          </ul>
-        ))}
-      </div>
     </div>
   );
 }

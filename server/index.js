@@ -8,7 +8,6 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const db = require("./dbConfig");
-const { use } = require("passport");
 const passportHttp = require("passport-http");
 const logout = require("express-passport-logout");
 const expressPassportLogout = require("express-passport-logout");
@@ -122,7 +121,7 @@ app.put("/api/produit/update", (req, res) => {
 
   console.log(CodeProduit);
   console.log(NomProduit);
-  consolde.log(Categorie);
+  console.log(Categorie);
   console.log(DetailProduit);
   const sqlUpdate =
     "UPDATE produit SET CodeProduit,NomProduit,Categorie,DetailProduit = ?,?,?,? WHERE CodeProduit = ?";

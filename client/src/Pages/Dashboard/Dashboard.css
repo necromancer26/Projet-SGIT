@@ -101,3 +101,12 @@
   border-radius: 10px;
   transition: 0.4s all ease-in;
 }
+.buttons-table-produit a{
+  background-color: #0077b6;
+  color: aliceblue;
+  border: none;
+  width: 80%;
+  margin: 2px 5px;
+  border-radius: 10px;
+  transition: 0.4s all ease-in;
+}

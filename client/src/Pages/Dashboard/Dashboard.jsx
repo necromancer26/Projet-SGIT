@@ -30,6 +30,7 @@ export default function Dashboard() {
   const [Banque] = useState("");
   const [RIB] = useState("");
   const [societes, setSocietes] = useState([]);
+  const [toggleEdit, setToggleEdit] = useState(false)
   useEffect(() => {
     axios
       .get("http://localhost:3001/societe/get")
@@ -228,7 +229,7 @@ export default function Dashboard() {
           </tr>
         </thead>
         <tbody>
-          {produit.map((produit) => (
+          {!toggleEdit && produit.map((produit) => (
             <tr key={produit.IDProduit}>
               <td>{produit.CodeProduit}</td>
               <td>{produit.NomProduit}</td>
@@ -243,17 +244,63 @@ export default function Dashboard() {
                   >
                     Supprimer
                   </button>
-                  <button
-                    onClick={() => {
-                      updateProduit(produit.IDProduit);
-                    }}
-                  >
+                  <button onClick={() => { setToggleEdit(!toggleEdit) }}>
                     Modifier
                   </button>
                 </div>
               </td>
-            </tr>
-          ))}
+            </tr>)
+          )}
+          {toggleEdit && produit.map((produit) => (
+            <tr key={produit.IDProduit}>
+              <td><input type="text"
+                id="code-produit"
+                name="code" value={produit.CodeProduit} /></td>
+              <td><input type="text"
+                id="nom-produit"
+                name="nom" value={produit.NomProduit} /></td>
+              <td>
+                <select
+                  id="categorie-produit"
+                  name="categorie"
+                  onChange={(e) => {
+                    // setCategorieProduit(e.target.value);
+                  }}
+                  value={produit.Categorie}
+                >
+                  <option value="produit.Categorie">{produit.Categorie}</option>
+                  <option value="logiciel">Logiciel</option>
+
+                </select>
+              </td>
+              <td>
+                <textarea
+                  id="detail-produit"
+                  name="detail"
+                  rows="5"
+                  cols="33"
+                  placeholder="..."
+                  onChange={(e) => {
+                  }}
+                  value={produit.Detail}
+                ></textarea>
+              </td>
+              <td>
+                <div className="buttons-table-produit">
+                  <button
+                    onClick={() => {
+                      deleteProduit(produit.IDProduit);
+                    }}
+                  >
+                    Supprimer
+                  </button>
+                  <button onClick={() => { setToggleEdit(!toggleEdit) }}>
+                    Modifier
+                  </button>
+                </div>
+              </td>
+            </tr>)
+          )}
         </tbody>
       </table>
     </div>

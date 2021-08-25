@@ -17,6 +17,7 @@ import TestingDb from "./Pages/TestingDb/TestingDb";
 import AddProduit from "./Pages/AddProduit/AddProduit";
 import Register from "./Pages/Register/Register";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import EditProduit from './Pages/EditProduit/EditProduit';
 function App() {
   return (
     <div className="App">
@@ -33,6 +34,7 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/Produit/:id" component={EditProduit} />
       </Switch>
       <Footer />
     </div>

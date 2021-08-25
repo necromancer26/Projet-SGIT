@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./TestingDb.css";
 
-export default function TestingDb() {
+export default function TestingDb(props) {
   const [nameMovie, setNameMovie] = useState("");
   const [reviewMovie, setReviewMovie] = useState("");
   const [movieReviewList, setMovieReviewList] = useState([]);
@@ -49,6 +49,7 @@ export default function TestingDb() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    console.log(props);
     axios
       .post("http://localhost:3001/api/insert", {
         movieName: nameMovie,
