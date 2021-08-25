@@ -5,19 +5,64 @@ import "./Login.css";
 export default function Register() {
   const [pseudoUtilisateur, setPseudoUtilisateur] = useState("");
   const [mdpUtilisateur, setMdpUtilisateur] = useState("");
+  const [data, setData] = useState(null);
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3001/login", {
-        pseudoUtilisateur: pseudoUtilisateur,
-        mdpUtilisateur: mdpUtilisateur,
-      })
-      .then(() => {
-        alert("success login");
-      })
-      .catch((e) => console.log(e));
-  };
 
+    //
+    axios({
+      method: "POST",
+      data: {
+        username: pseudoUtilisateur,
+        password: mdpUtilisateur,
+      },
+      withCredentials: true,
+      url: "http://localhost:3001/login",
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    // axios
+    //   .post("http://localhost:3001/login", {
+    //     username: pseudoUtilisateur,
+    //     password: mdpUtilisateur,
+    //   })
+    //   .then(() => {
+    //     // alert("success login");
+    //   })
+    //   .catch((e) => console.log(e));
+  };
+  const getUser = () => {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:3001/user",
+    })
+      .then((res) => {
+        setData(res.data);
+        console.log(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+  const logout = () => {
+    axios({
+      method: "GET",
+      url: "http://localhost:3001/logout",
+      withCredentials: true,
+    })
+      .then((res) => {
+        setData(res.data);
+        console.log(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
   return (
     <div className="Register">
       <h1>Login Page</h1>
@@ -54,6 +99,15 @@ export default function Register() {
           <input type="reset" value="Cancel" className="reset-button" />
         </div>
       </form>
+      <div>
+        <h1>Get User</h1>
+        <button onClick={getUser}>Submit</button>
+        {data ? <h1>Welcome Back {data.username}</h1> : null}
+      </div>
+      <div>
+        <h1>Log Out</h1>
+        <button onClick={logout}>Submit</button>
+      </div>
     </div>
   );
 }

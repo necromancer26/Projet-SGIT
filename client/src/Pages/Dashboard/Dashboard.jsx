@@ -235,7 +235,7 @@ export default function Dashboard() {
               <td>{produit.Categorie}</td>
               <td>{produit.Detail}</td>
               <td>
-                <div className="buttons-table">
+                <div className="buttons-table-produit">
                   <button
                     onClick={() => {
                       deleteProduit(produit.IDProduit);

@@ -1,21 +1,27 @@
 const express = require("express");
 const app = express();
-const mysql = require("mysql");
+
 var cors = require("cors");
 const passport = require("passport");
 const passportLocal = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
-app.use(cors()); // Use this after the variable declaration
+const db = require("./dbConfig");
+const { use } = require("passport");
+const passportHttp = require("passport-http");
+const logout = require("express-passport-logout");
+const expressPassportLogout = require("express-passport-logout");
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "admin",
-  database: "sgit",
-});
+//---------------------------------END OF IMPORT------------------------//
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
+  })
+); // Use this after the variable declaration
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -25,6 +31,7 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
+require("./passportConfig")(passport);
 
 db.connect(function (error) {
   if (!!error) {
@@ -40,15 +47,15 @@ app.listen(3001, () => {
 
 /* Backend Routes */
 
-app.post("/register", (req, res) => {
+app.post("/register", async (req, res) => {
   const { nomUtilisateur, pseudoUtilisateur, mdpUtilisateur, mdpConfirm } =
     req.body;
-  // mdpUtilisateur === mdpConfirm ? console.log("true") : console.log("error");
+  const hashedPassword = await bcrypt.hash(mdpUtilisateur, 10);
   const sqlInsert =
     "INSERT INTO utilisateur (NomUtilisateur,PseudoUtilisateur,MotDePasse) VALUES (?,?,?)";
   db.query(
     sqlInsert,
-    [nomUtilisateur, pseudoUtilisateur, mdpUtilisateur],
+    [nomUtilisateur, pseudoUtilisateur, hashedPassword],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -56,10 +63,27 @@ app.post("/register", (req, res) => {
     }
   );
 });
-app.post("/login", (req, res) => {
-  console.log(req.body);
+app.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    console.log(user);
+    if (err) throw err;
+    if (!user) console.log("No User received");
+    else {
+      req.logIn(user, (err) => {
+        if (err) throw err;
+        res.send("Successfully Authenticated");
+      });
+    }
+  })(req, res, next);
 });
-
+app.get("/user", (req, res) => {
+  // console.log("req.user :::", req.user);
+  res.status(200).send(req.user);
+});
+app.get("/logout", (req, res) => {
+  req.logout();
+  res.send({ message: "Successfully logged out" });
+});
 app.get("/api/produit/get", (req, res) => {
   const sqlSelect = "SELECT * FROM produit";
   db.query(sqlSelect, (err, result) => {
@@ -210,7 +234,6 @@ app.put("/societe/update", (req, res) => {
 
 
 // INSERT INTO produit (CodeProduit,NomProduit,Categorie,Detail) VALUES (?,?,?,?)
-// */
 // app.get("/api/get", (req, res) => {
 //   const sqlSelect = "SELECT * FROM movie_reviews";
 //   db.query(sqlSelect, (err, result) => {
