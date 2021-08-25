@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./societe.css";
 import { Link } from "react-router-dom"
@@ -27,13 +27,13 @@ export default function Societe() {
   const [TauxAssGroupeOuvriere, setTauxAssGroupeOuvriere] = useState("");
   const [Banque, setBanque] = useState("");
   const [RIB, setRIB] = useState("");
-  const [societe, setSociete] = useState([]);
+  // const [societe, setSociete] = useState([]);
 
-  useEffect(() => {
-    axios.get("http://localhost:3001/societe/get").then((response) => {
-      setSociete(response.data);
-    });
-  });
+  // useEffect(() => {
+  //   axios.get("http://localhost:3001/societe/get").then((response) => {
+  //     setSociete(response.data);
+  //   });
+  // });
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -3,10 +3,10 @@ import axios from "axios";
 import "./Dashboard.css";
 import { Link } from "react-router-dom"
 export default function Dashboard() {
-  const [NomProduit] = useState("");
-  const [CodeProduit] = useState("");
-  const [Categorie] = useState("");
-  const [DetailProduit] = useState("");
+  // const [NomProduit] = useState("");
+  // const [CodeProduit] = useState("");
+  // const [Categorie] = useState("");
+  // const [DetailProduit] = useState("");
   const [produit, setProduits] = useState([]);
   const [NomSociete] = useState("");
   const [Adresse] = useState("");
@@ -87,7 +87,6 @@ export default function Dashboard() {
     axios
       .get("http://localhost:3001/api/produit/get")
       .then((response) => {
-        console.log(response.data);
         setProduits(response.data);
       })
       .catch((error) => {
@@ -115,20 +114,20 @@ export default function Dashboard() {
         console.log(e);
       });
   };
-  const updateProduit = (produitID) => {
-    console.log(produitID);
-    axios
-      .put('http://localhost:3001/api/produit/update', {
-        NomProduit: NomProduit,
-        CodeProduit: CodeProduit,
-        Categorie: Categorie,
-        DetailProduit: DetailProduit,
-      })
-      .then((res) => { })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const updateProduit = (produitID) => {
+  //   console.log(produitID);
+  //   axios
+  //     .put('http://localhost:3001/api/produit/update', {
+  //       NomProduit: NomProduit,
+  //       CodeProduit: CodeProduit,
+  //       Categorie: Categorie,
+  //       DetailProduit: DetailProduit,
+  //     })
+  //     .then((res) => { })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
   return (
     <div className="Dashboard">
       <h1>Admin Page</h1>

@@ -34,16 +34,16 @@ export default function AddProduit() {
       .catch((e) => console.log(e));
   };
 
-  const deleteProduit = (produitId) => {
-    axios
-      .delete(`http://localhost:3001/api/produit/delete/${produitId}`)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+//   const deleteProduit = (produitId) => {
+//     axios
+//       .delete(`http://localhost:3001/api/produit/delete/${produitId}`)
+//       .then((res) => {
+//         console.log(res);
+//       })
+//       .catch((e) => {
+//         console.log(e);
+//       });
+//   };
 
   return (
     <div className="Produit">
