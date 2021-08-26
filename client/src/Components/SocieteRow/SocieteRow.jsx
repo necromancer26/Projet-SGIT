@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./SocieteRow.css";
 
 export default function ProductRow(props) {
   const [societeEdit, setSocieteEdit] = useState(false);
@@ -179,7 +180,7 @@ export default function ProductRow(props) {
     </tr>
   );
   const editRender = () => (
-    <tr>
+    <tr className="societe-row-edit">
       <td>
         <input
           value={nomSociete}
@@ -360,10 +361,7 @@ export default function ProductRow(props) {
         />
       </td>
       <td>
-        <div
-          className="buttons-table-produit"
-          style={{ display: "flex", flexDirection: "column" }}
-        >
+        <div className="buttons-table-produit">
           <button
             onClick={() => {
               setSocieteEdit(false);

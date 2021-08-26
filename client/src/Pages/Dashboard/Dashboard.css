@@ -1,6 +1,6 @@
 .Dashboard {
   width: 100%;
-
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,8 +10,8 @@
 }
 .table-societe {
   font-size: 11px;
-   margin: 0 10px; 
-   margin: 30px 10px;
+  margin: 0 10px;
+  margin: 30px 10px;
   width: 80%;
   border-radius: 10px;
   overflow: hidden;
@@ -23,7 +23,6 @@
 .table-societe td {
   border-top: 1px solid #073b4c;
   text-align: center;
-
 }
 .table-societe thead,
 .table-societe tfoot {
@@ -36,7 +35,6 @@
   flex-direction: row;
   margin-bottom: 50px;
   margin-top: 30px;
-  
 }
 .Dashboard-button1 button {
   margin-right: 20px;
@@ -55,7 +53,7 @@
   width: 100%;
   border-radius: 10px;
   transition: 0.4s all ease-in;
-  }
+}
 .buttons-table button {
   background-color: #0077b6;
   color: aliceblue;
@@ -68,9 +66,9 @@
 .buttons-table button:hover {
   background-color: #a0c4ff;
 }
-.table-produit{
+.table-produit {
   font-size: 11px;
-   margin: 0 10px; 
+  margin: 0 10px;
   width: 80%;
   border-radius: 10px;
   overflow: hidden;
@@ -88,24 +86,16 @@
   background-color: #073b4c;
   color: #fff;
 }
-.buttons-table-produit{
+.buttons-table-produit {
   display: flex;
-
+  flex-direction: column;
+  align-items: center;
 }
-.buttons-table-produit button{
+.buttons-table-produit button {
   background-color: #0077b6;
   color: aliceblue;
   border: none;
-  width: 80%;
-  margin: 2px 5px;
-  border-radius: 10px;
-  transition: 0.4s all ease-in;
-}
-.buttons-table-produit a{
-  background-color: #0077b6;
-  color: aliceblue;
-  border: none;
-  width: 80%;
+  width: 90%;
   margin: 2px 5px;
   border-radius: 10px;
   transition: 0.4s all ease-in;
