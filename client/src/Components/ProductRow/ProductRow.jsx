@@ -20,7 +20,7 @@ export default function ProductRow(props) {
   }, [IDProduit, CodeProduit, NomProduit, Categorie, Detail]);
   const deleteProduit = (produitID) => {
     axios
-      .delete(`http://localhost:3001/api/produit/delete/${produitID}`)
+      .delete(`http://localhost:3001/produit/delete/${produitID}`)
       .then((res) => {
         console.log(res);
       })
@@ -32,7 +32,7 @@ export default function ProductRow(props) {
   const updateProduit = (produitID) => {
     setIdProduit(produitID);
     axios
-      .put("http://localhost:3001/api/produit/update", {
+      .put("http://localhost:3001/produit/update", {
         NomProduit: nomProduit,
         CodeProduit: codeProduit,
         Categorie: categorie,

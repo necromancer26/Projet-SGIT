@@ -35,7 +35,7 @@ db.connect(function (error) {
 app.listen(3001, () => {
   console.log("running on port 3001");
 });
-app.use("/api/produit", routeProduit);
+app.use("/produit", routeProduit);
 app.use("/societe", routeSociete);
 app.use("/", routeUtilisateur);
 //---------------------------------END OF MIDDLEWARE------------------------//

@@ -5,7 +5,7 @@ export default function TableProduit() {
   const [produits, setProduits] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/produit/get")
+      .get("http://localhost:3001/produit/get")
       .then((response) => {
         setProduits(response.data);
       })

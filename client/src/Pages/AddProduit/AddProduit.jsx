@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./AddProduit.css";
-import { Link } from "react-router-dom"
-
+import { Link } from "react-router-dom";
 
 export default function AddProduit() {
   const [nomProduit, setNomProduit] = useState("");
@@ -16,18 +15,18 @@ export default function AddProduit() {
     // setClick(!click);
   };
   useEffect(() => {
-    axios.get("http://localhost:3001/api/produit/get").then((res) => {
+    axios.get("http://localhost:3001/produit/get").then((res) => {
       setProduits(res.data);
       console.log("updated");
     });
     // return () => alert("goodbye component");
   }, [click]);
-  useEffect(() => { }, [produits]);
+  useEffect(() => {}, [produits]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:3001/api/produit/insert", {
+      .post("http://localhost:3001/produit/insert", {
         nomProduit: nomProduit,
         codeProduit: codeProduit,
         categorieProduit: categorieProduit,
@@ -41,7 +40,7 @@ export default function AddProduit() {
 
   const deleteProduit = (produitId) => {
     axios
-      .delete(`http://localhost:3001/api/produit/delete/${produitId}`)
+      .delete(`http://localhost:3001/produit/delete/${produitId}`)
       .then((res) => {
         console.log(res);
       })
@@ -90,7 +89,6 @@ export default function AddProduit() {
         >
           <option value="">--Veuillez choisir une option--</option>
           <option value="logiciel">Logiciel</option>
-
         </select>
         <label htmlFor="detail-produit">Detail produit</label>
         <textarea
@@ -105,10 +103,8 @@ export default function AddProduit() {
           value={detailProduit}
         ></textarea>
         <button onClick={handleClick}>Ajouter Produit</button>
-        <Link to="/dashboard" >
-          <button>
-            Retour
-          </button>
+        <Link to="/dashboard">
+          <button>Retour</button>
         </Link>
       </form>
       <div className="produit-container">
@@ -128,7 +124,7 @@ export default function AddProduit() {
                 DELETE
               </button>
 
-            <button className="edit-produit-button">EDIT</button>
+              <button className="edit-produit-button">EDIT</button>
             </li>
           </ul>
         ))}

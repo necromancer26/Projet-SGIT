@@ -1,23 +1,19 @@
 import { Switch, Route } from "react-router-dom";
-import "./App.css";
-// import Navbar from "./Components/Navbar/navbar";
 import Homepage from "./Pages/Homepage/Homepage";
-// import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
-// import NavItem from "./Components/Navbar/NavItem/NavItem";
 import Contact from "./Pages/Contact/Contact";
-// import CustomNavbar from "./Components/CustomNavbar/CustomNavbar";
 import NeoNavbar from "./Components/NeoNavbar/NeoNavbar";
 import About from "./Pages/About/About";
 import Logiciel from "./Pages/Logiciels/logiciel";
 import EnCour from "./Pages/EnCour/EnCour";
 import Login from "./Pages/Login/Login";
 import Societe from "./Pages/societe/societe";
-import TestingDb from "./Pages/TestingDb/TestingDb";
 import AddProduit from "./Pages/AddProduit/AddProduit";
 import Register from "./Pages/Register/Register";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import EditProduit from './Pages/EditProduit/EditProduit';
+import EditProduit from "./Pages/EditProduit/EditProduit";
+import "./App.css";
+
 function App() {
   return (
     <div className="App">
@@ -29,7 +25,6 @@ function App() {
         <Route exact path="/logiciel" component={Logiciel} />
         <Route exact path="/EnCour" component={EnCour} />
         <Route exact path="/societe" component={Societe} />
-        <Route exact path="/test" component={TestingDb} />
         <Route exact path="/Produit" component={AddProduit} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/dashboard" component={Dashboard} />

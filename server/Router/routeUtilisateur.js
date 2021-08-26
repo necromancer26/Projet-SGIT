@@ -23,7 +23,7 @@ router.post("/register", async (req, res) => {
     sqlInsert,
     [nomUtilisateur, pseudoUtilisateur, hashedPassword],
     (err, result) => {
-      err ? console.log(err) : console.log(result);
+      err ? console.log(err) : null;
     }
   );
 });
