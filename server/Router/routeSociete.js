@@ -70,7 +70,7 @@ router.post("/insert", (req, res) => {
     }
   );
 });
-//Delete Route test
+
 router.delete("/delete/:IDSociete", (req, res) => {
   const IDSociete = req.params.IDSociete;
   const sqlDelete = "DELETE FROM societe  WHERE IDSociete = ?";
