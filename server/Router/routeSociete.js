@@ -76,27 +76,29 @@ router.delete("/delete/:IDSociete", (req, res) => {
   });
 });
 router.put("/update", (req, res) => {
-  const NomSociete = req.body.NomSociete;
-  const Adresse = req.body.Adresse;
-  const CodeCNSS = req.body.CodeCNSS;
-  const MatriculeFiscal = req.body.MatriculeFiscal;
-  const CodeTVA = req.body.CodeTVA;
-  const CodeCategorie = req.body.CodeCategorie;
-  const NombreEtsSecondaire = req.body.NombreEtsSecondaire;
-  const Tel = req.body.Tel;
-  const Fax = req.body.Fax;
-  const Responsable = req.body.Responsable;
-  const Mail = req.body.Mail;
-  const TauxCNSSPatronal = req.body.TauxCNSSPatronal;
-  const TauxCNSSOuvriere = req.body.TauxCNSSOuvriere;
-  const TauxAccidentTravail = req.body.TauxAccidentTravail;
-  const TauxTFP = req.body.TauxTFP;
-  const TauxFOPROLOS = req.body.TauxFOPROLOS;
-  const AssuranceGroupe = req.body.AssuranceGroupe;
-  const TauxAssGroupePatronal = req.body.TauxAssGroupePatronal;
-  const TauxAssGroupeOuvriere = req.body.TauxAssGroupeOuvriere;
-  const Banque = req.body.Banque;
-  const RIB = req.body.RIB;
+  const {
+    NomSociete,
+    Adresse,
+    CodeCNSS,
+    MatriculeFiscal,
+    CodeTVA,
+    CodeCategorie,
+    NombreEtsSecondaire,
+    Tel,
+    Fax,
+    Responsable,
+    Mail,
+    TauxCNSSPatronal,
+    TauxCNSSOuvriere,
+    TauxAccidentTravail,
+    TauxTFP,
+    TauxFOPROLOS,
+    AssuranceGroupe,
+    TauxAssGroupePatronal,
+    TauxAssGroupeOuvriere,
+    Banque,
+    RIB,
+  } = req.body;
 
   const sqlUpdate =
     "UPDATE societe SET NomSociete = ? , Adresse = ? , CodeCNSS = ? , MatriculeFiscal = ? , CodeTVA = ? , CodeCategorie = ? , NombreEtsSecondaire = ? , Tel = ? , Fax = ? , Responsable = ? , Mail = ? , TauxCNSSPatronal = ? , TauxCNSSOuvriere = ? , TauxAccidentTravail = ? , TauxTFP = ? , TauxFOPROLOS = ? , AssuranceGroupe = ? , TauxAssGroupePatronal = ? , TauxAssGroupeOuvriere = ? , Banque = ? , RIB = ? WHERE NomSociete = ?";

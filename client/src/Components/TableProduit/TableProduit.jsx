@@ -12,7 +12,7 @@ export default function TableProduit() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [produits]);
   return (
     <table className="table-societe">
       <thead>

@@ -1,4 +1,4 @@
-/*----------------------------Imports--------------------------------------*/
+/*----------------------------Imports-------------------------------------*/
 var express = require("express");
 var router = express.Router();
 var db = require("../Config/dbConfig");
@@ -34,13 +34,15 @@ router.post("/insert", (req, res) => {
   );
 });
 router.put("/update", (req, res) => {
-  const CodeProduit = req.body.CodeProduit;
-  const NomProduit = req.body.NomProduit;
-  const Categorie = req.body.Categorie;
-  const DetailProduit = req.body.DetailProduit;
-  const idProduit = req.body.IDProduit;
-  const sqlUpdate =
-    "UPDATE produit SET CodeProduit = ?, NomProduit = ?, Categorie = ?, Detail = ?  WHERE IDProduit = ? ";
+  const {
+    CodeProduit,
+    NomProduit,
+    Categorie,
+    DetailProduit,
+    idProduit,
+    sqlUpdate,
+  } = req.body;
+  ("UPDATE produit SET CodeProduit = ?, NomProduit = ?, Categorie = ?, Detail = ?  WHERE IDProduit = ? ");
   db.query(
     sqlUpdate,
     [CodeProduit, NomProduit, Categorie, DetailProduit, idProduit],

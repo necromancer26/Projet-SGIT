@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function ProductRow(props) {
+export default function ProductRow({ produit }) {
   const [isEditing, setIsEditing] = useState(false);
   const [nomProduit, setNomProduit] = useState("");
   const [codeProduit, setCodeProduit] = useState("");
   const [categorie, setCategorie] = useState("");
   const [detail, setDetail] = useState("");
   const [idProduit, setIdProduit] = useState("");
-  const { IDProduit, CodeProduit, NomProduit, Categorie, Detail } = {
-    ...props.produit,
-  };
+  const { IDProduit, CodeProduit, NomProduit, Categorie, Detail } = produit;
   useEffect(() => {
     setIdProduit(IDProduit);
     setCodeProduit(CodeProduit);

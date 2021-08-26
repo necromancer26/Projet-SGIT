@@ -7,7 +7,6 @@ const db = require("./Config/dbConfig");
 const routeProduit = require("./Router/routeProduit");
 const routeSociete = require("./Router/routeSociete");
 const routeUtilisateur = require("./Router/routeUtilisateur");
-
 //---------------------------------END OF IMPORT------------------------//
 app.use(
   cors({

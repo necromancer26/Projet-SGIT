@@ -7,11 +7,7 @@ import TableSociete from "../../Components/TableSociete/TableSociete";
 export default function Dashboard() {
   const [data, setData] = useState("");
   useEffect(() => {
-    axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:3001/user",
-    })
+    axios.get("http://localhost:3001/user",{withCredentials:true})
       .then((res) => {
         setData(res.data);
         console.log(res.data);
