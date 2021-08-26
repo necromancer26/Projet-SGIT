@@ -9,7 +9,7 @@ export default function ProductRow(props) {
   const [detail, setDetail] = useState("");
   const [idProduit, setIdProduit] = useState("");
   const { IDProduit, CodeProduit, NomProduit, Categorie, Detail } = {
-    ...props,
+    ...props.produit,
   };
   useEffect(() => {
     setIdProduit(IDProduit);

@@ -224,9 +224,22 @@ app.put("/societe/update", (req, res) => {
   const TauxAssGroupeOuvriere = req.body.TauxAssGroupeOuvriere;
   const Banque = req.body.Banque;
   const RIB = req.body.RIB;
+  console.log("societe :", NomSociete);
+  console.log("societe :", Adresse);
+  console.log("societe :", CodeCNSS);
+  console.log("societe :", MatriculeFiscal);
+  console.log("societe :", CodeTVA);
+  console.log("societe :", CodeCategorie);
+  console.log("societe :", NombreEtsSecondaire);
+  console.log("societe :", Tel);
+  console.log("societe :", Fax);
+  console.log("societe :", Responsable);
+  console.log("societe :", Mail);
+  console.log("societe :", TauxCNSSPatronal);
+  console.log("tauxcnssouvriere :", TauxCNSSOuvriere);
 
   const sqlUpdate =
-    "UPDATE societe SET NomSociete, Adresse, CodeCNSS, MatriculeFiscal, CodeTVA, CodeCategorie, NombreEtsSecondaire, Tel, Fax, Responsable, Mail, TauxCNSSPatronal, TauxCNSSOuvriere, TauxAccidentTravail, TauxTFP, TauxFOPROLOS, AssuranceGroupe, TauxAssGroupePatronal, TauxAssGroupeOuvriere, Banque, RIB = ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? WHERE NomSociete = ?";
+    "UPDATE societe SET NomSociete = ? , Adresse = ? , CodeCNSS = ? , MatriculeFiscal = ? , CodeTVA = ? , CodeCategorie = ? , NombreEtsSecondaire = ? , Tel = ? , Fax = ? , Responsable = ? , Mail = ? , TauxCNSSPatronal = ? , TauxCNSSOuvriere = ? , TauxAccidentTravail = ? , TauxTFP = ? , TauxFOPROLOS = ? , AssuranceGroupe = ? , TauxAssGroupePatronal = ? , TauxAssGroupeOuvriere = ? , Banque = ? , RIB = ? WHERE NomSociete = ?";
   db.query(
     sqlUpdate,
     [

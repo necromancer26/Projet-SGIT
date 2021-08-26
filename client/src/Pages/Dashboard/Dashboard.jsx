@@ -2,30 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Dashboard.css";
 import ProductRow from "../../Components/ProductRow/ProductRow";
+import SocieteRow from "../../Components/SocieteRow/SocieteRow";
 import { Link } from "react-router-dom";
 export default function Dashboard() {
   const [produits, setProduits] = useState([]);
-  const [NomSociete] = useState("");
-  const [Adresse] = useState("");
-  const [CodeCNSS] = useState("");
-  const [MatriculeFiscal] = useState("");
-  const [CodeTVA] = useState("");
-  const [CodeCategorie] = useState("");
-  const [NombreEtsSecondaire] = useState("");
-  const [Tel] = useState("");
-  const [Fax] = useState("");
-  const [Responsable] = useState("");
-  const [Mail] = useState("");
-  const [TauxCNSSPatronal] = useState("");
-  const [TauxAccidentTravail] = useState("");
-  const [TauxCNSSOuvriere] = useState("");
-  const [TauxTFP] = useState("");
-  const [TauxFOPROLOS] = useState("");
-  const [AssuranceGroupe] = useState("");
-  const [TauxAssGroupePatronal] = useState("");
-  const [TauxAssGroupeOuvriere] = useState("");
-  const [Banque] = useState("");
-  const [RIB] = useState("");
   const [societes, setSocietes] = useState([]);
   // const [toggleEdit, setToggleEdit] = useState(false)
   useEffect(() => {
@@ -45,49 +25,7 @@ export default function Dashboard() {
       .catch((error) => {
         console.log(error);
       });
-    console.log("Hello World!");
   }, []);
-  const deleteSociete = (societeId) => {
-    axios
-      .delete(`http://localhost:3001/societe/delete/${societeId}`)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-  const updateSociete = (societeID) => {
-    console.log(societeID);
-    axios
-      .put("http://localhost:3001/societe/update", {
-        NomSociete: NomSociete,
-        Adresse: Adresse,
-        CodeCNSS: CodeCNSS,
-        MatriculeFiscal: MatriculeFiscal,
-        CodeTVA: CodeTVA,
-        CodeCategorie: CodeCategorie,
-        NombreEtsSecondaire: NombreEtsSecondaire,
-        Tel: Tel,
-        Fax: Fax,
-        Responsable: Responsable,
-        Mail: Mail,
-        TauxCNSSPatronal: TauxCNSSPatronal,
-        TauxCNSSOuvriere: TauxCNSSOuvriere,
-        TauxAccidentTravail: TauxAccidentTravail,
-        TauxTFP: TauxTFP,
-        TauxFOPROLOS: TauxFOPROLOS,
-        AssuranceGroupe: AssuranceGroupe,
-        TauxAssGroupePatronal: TauxAssGroupePatronal,
-        TauxAssGroupeOuvriere: TauxAssGroupeOuvriere,
-        Banque: Banque,
-        RIB: RIB,
-      })
-      .then((res) => {})
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <div className="Dashboard">
@@ -132,44 +70,7 @@ export default function Dashboard() {
         </thead>
         <tbody>
           {societes.map((societe) => (
-            <tr key={societe.IDSociete}>
-              <td>{societe.NomSociete}</td>
-              <td>{societe.Adresse}</td>
-              <td>{societe.CodeCNSS}</td>
-              <td>{societe.MatriculeFiscal}</td>
-              <td>{societe.CodeTVA}</td>
-              <td>{societe.CodeCategorie}</td>
-              <td>{societe.NombreEtsSecondaire}</td>
-              <td>{societe.Tel}</td>
-              <td>{societe.Fax}</td>
-              <td>{societe.Responsable}</td>
-              <td>{societe.Mail}</td>
-              <td>{societe.TauxCNSSPatronal}</td>
-              <td>{societe.TauxCNSSOuvriere}</td>
-              <td>{societe.TauxAccidentTravail}</td>
-              <td>{societe.TauxTFP}</td>
-              <td>{societe.TauxFOPROLOS}</td>
-              <td>{societe.AssuranceGroupe}</td>
-              <td>{societe.TauxAssGroupePatronal}</td>
-              <td>{societe.Banque}</td>
-              <td>{societe.RIB}</td>
-              <div className="buttons-table">
-                <button
-                  onClick={() => {
-                    deleteSociete(societe.IDSociete);
-                  }}
-                >
-                  Supprimer
-                </button>
-                <button
-                  onClick={() => {
-                    updateSociete(societe.IDSociete);
-                  }}
-                >
-                  Modifier
-                </button>
-              </div>
-            </tr>
+            <SocieteRow societe={societe} />
           ))}
         </tbody>
       </table>
@@ -185,14 +86,7 @@ export default function Dashboard() {
         </thead>
         <tbody>
           {produits.map((produit) => (
-            <ProductRow
-              IDProduit={produit.IDProduit}
-              CodeProduit={produit.CodeProduit}
-              NomProduit={produit.NomProduit}
-              Categorie={produit.Categorie}
-              Detail={produit.Detail}
-              produits={produit}
-            />
+            <ProductRow produit={produit} />
           ))}
         </tbody>
       </table>
