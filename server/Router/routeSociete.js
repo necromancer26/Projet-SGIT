@@ -1,7 +1,9 @@
+/*----------------------------Imports--------------------------------------*/
 var express = require("express");
 var router = express.Router();
 var db = require("../Config/dbConfig");
-
+/*----------------------------Middleware(none)----------------------------*/
+/*----------------------------Routes--------------------------------------*/
 router.get("/get", (req, res) => {
   const sqlSelect = "SELECT * FROM societe";
   db.query(sqlSelect, (err, result) => {

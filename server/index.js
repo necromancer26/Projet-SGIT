@@ -15,8 +15,7 @@ app.use(
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
   })
-); // Use this after the variable declaration
-
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -39,3 +38,4 @@ app.listen(3001, () => {
 app.use("/api/produit", routeProduit);
 app.use("/societe", routeSociete);
 app.use("/", routeUtilisateur);
+//---------------------------------END OF MIDDLEWARE------------------------//
