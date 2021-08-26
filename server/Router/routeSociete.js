@@ -34,8 +34,12 @@ router.post("/insert", (req, res) => {
     Banque,
     RIB,
   } = req.body;
-  const sqlInsert =
-    "INSERT INTO societe (NomSociete, Adresse, CodeCNSS, MatriculeFiscal, CodeTVA, CodeCategorie, NombreEtsSecondaire, Tel, Fax, Responsable, Mail, TauxCNSSPatronal, TauxCNSSOuvriere, TauxAccidentTravail, TauxTFP, TauxFOPROLOS, AssuranceGroupe, TauxAssGroupePatronal, TauxAssGroupeOuvriere, Banque, RIB) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+  const sqlInsert = `INSERT INTO societe 
+  (NomSociete, Adresse, CodeCNSS, MatriculeFiscal, CodeTVA, CodeCategorie, 
+    NombreEtsSecondaire, Tel, Fax, Responsable, Mail, TauxCNSSPatronal, 
+    TauxCNSSOuvriere, TauxAccidentTravail, TauxTFP, TauxFOPROLOS, AssuranceGroupe, 
+    TauxAssGroupePatronal, TauxAssGroupeOuvriere, Banque, RIB) 
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);`;
   db.query(
     sqlInsert,
     [
@@ -100,8 +104,29 @@ router.put("/update", (req, res) => {
     RIB,
   } = req.body;
 
-  const sqlUpdate =
-    "UPDATE societe SET NomSociete = ? , Adresse = ? , CodeCNSS = ? , MatriculeFiscal = ? , CodeTVA = ? , CodeCategorie = ? , NombreEtsSecondaire = ? , Tel = ? , Fax = ? , Responsable = ? , Mail = ? , TauxCNSSPatronal = ? , TauxCNSSOuvriere = ? , TauxAccidentTravail = ? , TauxTFP = ? , TauxFOPROLOS = ? , AssuranceGroupe = ? , TauxAssGroupePatronal = ? , TauxAssGroupeOuvriere = ? , Banque = ? , RIB = ? WHERE NomSociete = ?";
+  const sqlUpdate = `UPDATE societe 
+  SET NomSociete = ? , 
+  Adresse = ? , 
+  CodeCNSS = ? , 
+  MatriculeFiscal = ? , 
+  CodeTVA = ? , 
+  CodeCategorie = ? , 
+  NombreEtsSecondaire = ? , 
+  Tel = ? , 
+  Fax = ? , 
+  Responsable = ? , 
+  Mail = ? , 
+  TauxCNSSPatronal = ? , 
+  TauxCNSSOuvriere = ? , 
+  TauxAccidentTravail = ? , 
+  TauxTFP = ? , 
+  TauxFOPROLOS = ? , 
+  AssuranceGroupe = ? , 
+  TauxAssGroupePatronal = ? , 
+  TauxAssGroupeOuvriere = ? , 
+  Banque = ? , 
+  RIB = ? 
+  WHERE NomSociete = ?`;
   db.query(
     sqlUpdate,
     [
