@@ -25,15 +25,6 @@ export default function Register() {
       .catch((e) => {
         console.log(e);
       });
-    // axios
-    //   .post("http://localhost:3001/login", {
-    //     username: pseudoUtilisateur,
-    //     password: mdpUtilisateur,
-    //   })
-    //   .then(() => {
-    //     // alert("success login");
-    //   })
-    //   .catch((e) => console.log(e));
   };
   const getUser = () => {
     axios({

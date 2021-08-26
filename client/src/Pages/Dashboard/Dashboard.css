@@ -36,36 +36,40 @@
   margin-bottom: 50px;
   margin-top: 30px;
 }
-.Dashboard-button1 button {
+.dashboard-top-button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.dashboard-top-button-container button,
+.dashboard-top-button-container a {
+  text-align: center;
   margin-right: 20px;
   background-color: #073b4c;
   color: aliceblue;
   border: none;
-  width: 100%;
+  width: 150px;
   border-radius: 10px;
   transition: 0.4s all ease-in;
 }
-.Dashboard-button2 button {
-  margin-left: 20px;
-  background-color: #073b4c;
-  color: aliceblue;
-  border: none;
-  width: 100%;
-  border-radius: 10px;
-  transition: 0.4s all ease-in;
+.dashboard-top-button-container button:hover,
+.dashboard-top-button-container a:hover {
+  background-color: #118ab2;
 }
-.buttons-table button {
-  background-color: #0077b6;
+/* .buttons-table button {
+  background-color: #aaaa;
   color: aliceblue;
   border: none;
   width: 80%;
   margin: 2px 0;
   border-radius: 10px;
   transition: 0.4s all ease-in;
-}
-.buttons-table button:hover {
+} */
+/* .buttons-table button:hover {
   background-color: #a0c4ff;
-}
+} */
 .table-produit {
   font-size: 11px;
   margin: 0 10px;
