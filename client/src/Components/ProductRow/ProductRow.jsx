@@ -28,6 +28,7 @@ export default function ProductRow({ produit }) {
     console.log(produitID);
   };
   const updateProduit = (produitID) => {
+    console.log("params", nomProduit, codeProduit, categorie, detail);
     setIdProduit(produitID);
     axios
       .put("http://localhost:3001/produit/update", {

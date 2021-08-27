@@ -29,7 +29,6 @@ router.post("/register", async (req, res) => {
 });
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
-    console.log(user);
     if (err) throw err;
     if (!user) console.log("No User received");
     else {

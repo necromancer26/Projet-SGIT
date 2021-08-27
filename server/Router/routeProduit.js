@@ -34,12 +34,13 @@ router.post("/insert", (req, res) => {
   );
 });
 router.put("/update", (req, res) => {
-  const { CodeProduit, NomProduit, Categorie, DetailProduit, idProduit } =
+  const { CodeProduit, NomProduit, Categorie, DetailProduit, IDProduit } =
     req.body;
+  console.log(req.body);
   const sqlUpdate = `UPDATE produit SET CodeProduit = ?, NomProduit = ?, Categorie = ?, Detail = ?  WHERE IDProduit = ? `;
   db.query(
     sqlUpdate,
-    [CodeProduit, NomProduit, Categorie, DetailProduit, idProduit],
+    [CodeProduit, NomProduit, Categorie, DetailProduit, IDProduit],
     (err, result) => {
       if (err) console.log(err);
       if (result) res.send(result);
