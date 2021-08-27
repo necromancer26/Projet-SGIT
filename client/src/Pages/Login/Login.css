@@ -4,3 +4,14 @@
   align-items: center;
   margin-top: 10px;
 }
+.Login {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: aliceblue;
+  color: #219ebc;
+}
+/* .Login h1 {
+} */

@@ -24,12 +24,16 @@ export default function NeoNavbar() {
             <li>Acceuil</li>
           </Link>
           <li
-            onClick={() => setToggle(!toggle)}
+            onMouseEnter={() => setToggle(true)}
+
             // onMouseLeave={() => setToggle(false)}
           >
             <Link to="#">Logiciels</Link> <i class="fas fa-caret-down"></i>
             {toggle && (
-              <ul className="neo-navbar-dropdown">
+              <ul
+                className="neo-navbar-dropdown"
+                onMouseLeave={() => setToggle(false)}
+              >
                 <Link to="/logiciel">
                   <li>Logiciels</li>
                 </Link>

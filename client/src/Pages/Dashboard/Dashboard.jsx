@@ -5,19 +5,19 @@ import { Link, useHistory } from "react-router-dom";
 import TableProduit from "../../Components/TableProduit/TableProduit";
 import TableSociete from "../../Components/TableSociete/TableSociete";
 export default function Dashboard() {
-  let history = useHistory;
+  let history = useHistory();
   const [data, setData] = useState("");
   useEffect(() => {
     axios
       .get("http://localhost:3001/user", { withCredentials: true })
       .then((res) => {
         setData(res.data);
-        console.log(res.data);
+        if (!res.data.username) history.push("/");
       })
       .catch((e) => {
         console.log(e);
       });
-  }, []);
+  }, [history]);
   const logout = () => {
     axios({
       method: "GET",
@@ -31,6 +31,7 @@ export default function Dashboard() {
       .catch((e) => {
         console.log(e);
       });
+    history.push("/");
   };
   return (
     data && (

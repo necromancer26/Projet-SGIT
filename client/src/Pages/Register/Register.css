@@ -44,7 +44,7 @@
   border: none;
   color: aliceblue;
   border-radius: 10px;
-  background-color: #06d6a0;
+  background-color: #219ebc;
   width: 90px;
   height: 30px;
   transition: 0.4s all ease-in;
@@ -59,7 +59,7 @@
 }
 .register-form button:hover,
 .register-form .reset-button:hover {
-  background-color: #bde0fe;
+  background-color: #8ecae6;
 }
 .button-container {
   display: flex;

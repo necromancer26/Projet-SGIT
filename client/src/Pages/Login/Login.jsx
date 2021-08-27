@@ -26,6 +26,7 @@ export default function Register() {
       )
       .then((res) => {
         console.log(res);
+        getUser();
       })
       .catch((e) => {
         console.log(e);
@@ -38,30 +39,32 @@ export default function Register() {
       })
       .then((res) => {
         setData(res.data);
-        if (res.data) {
+        if (res.data.username) {
+          history.push("/dashboard");
+        } else {
+          console.log("incorrect credentials");
         }
       })
       .catch((e) => {
-        console.log(e);
-      });
-    history.push("/dashboard");
-  };
-  const logout = () => {
-    axios({
-      method: "GET",
-      url: "http://localhost:3001/logout",
-      withCredentials: true,
-    })
-      .then((res) => {
-        setData(res.data);
-        console.log(res.data);
-      })
-      .catch((e) => {
-        console.log(e);
+        console.log("incorrect credentials", e);
       });
   };
+  // const logout = () => {
+  //   axios({
+  //     method: "GET",
+  //     url: "http://localhost:3001/logout",
+  //     withCredentials: true,
+  //   })
+  //     .then((res) => {
+  //       setData(res.data);
+  //       console.log(res.data);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // };
   return (
-    <div className="Register">
+    <div className="Login">
       <h1>Login Page</h1>
       <form
         className="register-form"
@@ -96,15 +99,7 @@ export default function Register() {
           <input type="reset" value="Cancel" className="reset-button" />
         </div>
       </form>
-      <div>
-        <h1>Get User</h1>
-        <button onClick={getUser}>Submit</button>
-        {data ? <h1>Welcome Back {data.username}</h1> : null}
-      </div>
-      <div>
-        <h1>Log Out</h1>
-        <button onClick={logout}>Submit</button>
-      </div>
+      {!data && <h1>Please Log In</h1>}
     </div>
   );
 }

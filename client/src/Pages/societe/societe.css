@@ -18,7 +18,7 @@
 .societe-form {
   margin: 50px 0;
   display: flex;
-  width: 100%;
+  width: 70%;
   flex-direction: column;
   padding: 20px;
   border: 5px solid #2a9d8f;
@@ -84,5 +84,4 @@
 }
 .societe-form a button {
   width: 100%;
- 
 }
