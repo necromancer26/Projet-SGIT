@@ -47,7 +47,12 @@ export default function NeoNavbar() {
           </Link>{" "}
           <Link to="/contact">
             <li>Contact</li>
-          </Link>{" "}
+          </Link>
+          <Link to="/login">
+            <li>
+              <i class="fas fa-sign-in-alt"></i>
+            </li>
+          </Link>
         </ul>
       </div>
     </nav>

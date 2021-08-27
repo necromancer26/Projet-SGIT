@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Dashboard.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import TableProduit from "../../Components/TableProduit/TableProduit";
 import TableSociete from "../../Components/TableSociete/TableSociete";
 export default function Dashboard() {
+  let history = useHistory;
   const [data, setData] = useState("");
   useEffect(() => {
-    axios.get("http://localhost:3001/user",{withCredentials:true})
+    axios
+      .get("http://localhost:3001/user", { withCredentials: true })
       .then((res) => {
         setData(res.data);
         console.log(res.data);

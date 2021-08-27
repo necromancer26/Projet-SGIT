@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import axios from "axios";
 import "./Login.css";
 
@@ -6,19 +7,23 @@ export default function Register() {
   const [pseudoUtilisateur, setPseudoUtilisateur] = useState("");
   const [mdpUtilisateur, setMdpUtilisateur] = useState("");
   const [data, setData] = useState(null);
+  let history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     //
-    axios({
-      method: "POST",
-      data: {
-        username: pseudoUtilisateur,
-        password: mdpUtilisateur,
-      },
-      withCredentials: true,
-      url: "http://localhost:3001/login",
-    })
+    axios
+      .post(
+        "http://localhost:3001/login",
+        {
+          username: pseudoUtilisateur,
+          password: mdpUtilisateur,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log(res);
       })
@@ -27,18 +32,19 @@ export default function Register() {
       });
   };
   const getUser = () => {
-    axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:3001/user",
-    })
+    axios
+      .get("http://localhost:3001/user", {
+        withCredentials: true,
+      })
       .then((res) => {
         setData(res.data);
-        console.log(res.data);
+        if (res.data) {
+        }
       })
       .catch((e) => {
         console.log(e);
       });
+    history.push("/dashboard");
   };
   const logout = () => {
     axios({
