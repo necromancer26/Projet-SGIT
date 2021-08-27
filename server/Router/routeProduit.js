@@ -34,15 +34,9 @@ router.post("/insert", (req, res) => {
   );
 });
 router.put("/update", (req, res) => {
-  const {
-    CodeProduit,
-    NomProduit,
-    Categorie,
-    DetailProduit,
-    idProduit,
-    sqlUpdate,
-  } = req.body;
-  ("UPDATE produit SET CodeProduit = ?, NomProduit = ?, Categorie = ?, Detail = ?  WHERE IDProduit = ? ");
+  const { CodeProduit, NomProduit, Categorie, DetailProduit, idProduit } =
+    req.body;
+  const sqlUpdate = `UPDATE produit SET CodeProduit = ?, NomProduit = ?, Categorie = ?, Detail = ?  WHERE IDProduit = ? `;
   db.query(
     sqlUpdate,
     [CodeProduit, NomProduit, Categorie, DetailProduit, idProduit],
